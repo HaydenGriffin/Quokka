@@ -1,17 +1,20 @@
 import React, { Component } from 'react'
-import HomeIcon from './icons/HomeIcon'
+import {ReactComponent as HomeIcon} from '../assets/icons/home.svg';
+import {ReactComponent as SetlistIcon} from '../assets/icons/list.svg';
+import TrackIcon from './icons/TracksIcon'
 import ArtistIcon from './icons/ArtistIcon'
-import TracksIcon from './icons/TracksIcon'
-import SetlistIcon from './icons/SetlistIcon'
+
+const IconClassName = 'icon';
 
 export default class Header extends Component {
     render() {
         return (
-            <div>
-                <HomeIcon/>
-                <ArtistIcon/>
-                <TracksIcon/>
-                <SetlistIcon/>
+            <div className="sidebar">
+                <HomeIcon className={IconClassName}/>
+                <SetlistIcon className={IconClassName}/>
+                <TrackIcon></TrackIcon>
+                <ArtistIcon></ArtistIcon>
+
             </div>
 
         )
