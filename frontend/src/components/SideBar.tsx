@@ -6,7 +6,7 @@ import ArtistIcon from './icons/ArtistIcon'
 
 const IconClassName = 'icon';
 
-export default class Header extends Component {
+export default class Sidebar extends Component {
     render() {
         return (
             <div className="sidebar">
