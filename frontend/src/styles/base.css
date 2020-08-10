@@ -1,0 +1,10 @@
+
+.sidebar{
+    @apply w-24 fixed h-screen p-8 bg-green-200;
+    /* background-color: #CFDCD9; */
+}
+
+.icon{
+    @apply mb-8;
+}
+
