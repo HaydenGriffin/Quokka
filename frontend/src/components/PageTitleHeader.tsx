@@ -1,16 +1,18 @@
-import React from 'react';
-import CreateButton from './Button';
-import {FC} from 'react';
+import React, { PropsWithChildren, FC } from 'react';
 
+type PageTitleProps = {
+  title: string;
+};
 
-const PageTitleHeader: FC = () => {
-    return (
-        <div className="flex align-center">
-            <h1 className="text-6xl font-bold">Projects</h1>
-            <CreateButton/>
-        </div>
-    )
-  
-  }
-export default PageTitleHeader
-
+const PageTitleHeader: FC<PropsWithChildren<PageTitleProps>> = ({
+  title,
+  children,
+}: PropsWithChildren<PageTitleProps>) => {
+  return (
+    <div className="flex align-center">
+      <h1 className="text-6xl font-bold">{title}</h1>
+      {children}
+    </div>
+  );
+};
+export default PageTitleHeader;

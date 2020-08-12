@@ -1,10 +1,12 @@
-import React from 'react';
-import {FC} from 'react';
+import React, { FC, PropsWithChildren, MouseEvent } from 'react';
 
-const Button: FC = () => {
-  return (
-        <button className="bg-black text-white p-4">Create Project</button>
-  )
+type ButtonProps = {
+  //onClick: (event: MouseEvent<HTMLButtonElement>) => void;
+};
 
-}
-export default Button
+const PrimaryButton: FC<PropsWithChildren<ButtonProps>> = ({
+  children,
+}: PropsWithChildren<ButtonProps>) => {
+  return <button className="bg-black text-white p-4">{children}</button>;
+};
+export default PrimaryButton;

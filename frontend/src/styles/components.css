@@ -1,13 +1,12 @@
-.sidebar{
-    @apply w-24 fixed h-screen p-8 bg-green-300;
+.sidebar {
+  @apply w-24 fixed h-screen p-8 bg-green-300;
 }
 
-.icon{
-    @apply mb-8;
+.icon {
+  @apply mb-8;
 }
 
-.search-ico{
-    top:0;
-    left:0;
-
+.search-ico {
+  top: 0;
+  left: 0;
 }
