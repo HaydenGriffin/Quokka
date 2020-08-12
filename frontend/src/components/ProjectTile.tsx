@@ -24,8 +24,8 @@ const ProjectTile: FC<ProjectTileProps> = ({
       {notification && (
         <div className="bg-notify w-8 h-8 rounded-full text-center absolute top-0 left-0 z-10"></div>
       )}
-      <div className="bg-white rounded-md w-64 h- p-5 relative ml-3 mt-3">
-        <ThreeDots className="absolute top-0 right-0 mr-4 mt-2" />
+      <div className="bg-white rounded-md w-64 h- p-5 relative ml-3 mt-3 cursor-pointer transition duration-150 ease-in-out shadow-md hover:bg-accent">
+        <ThreeDots className="absolute top-0 right-0 mr-4 mt-2 cursor-pointer" />
         <h1 className="pt-8 text-3xl">{artist}</h1>
         <p className="text-xs text-gray-600">Current set</p>
         <h3 className="pb-12">{set}</h3>

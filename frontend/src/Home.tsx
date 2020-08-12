@@ -7,7 +7,7 @@ export default function Home() {
   return (
     <div className="pl-32">
       <Title title="Artists">
-        <Button>Create Project</Button>
+        <Button>Create Artist</Button>
       </Title>
       <div className="grid grid-cols-6 pt-32 col-gap-2 row-gap-12">
         <Tile

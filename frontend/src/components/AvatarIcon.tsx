@@ -1,7 +1,10 @@
 import React from 'react';
 import { FC } from 'react';
+import AvatarPhoto from '../assets/images/me.jpg';
 
 const AvatarIcon: FC = () => {
-  return <div className="bg-blue-600 rounded-full h-12 w-12 p-5 mr-2" />;
+  return (
+    <img src={AvatarPhoto} className="rounded-full h-24 w-24 p-5 mr-2" alt="" />
+  );
 };
 export default AvatarIcon;
