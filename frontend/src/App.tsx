@@ -1,9 +1,9 @@
-import React from "react";
-import { BrowserRouter as Router, Switch, Route } from "react-router-dom";
-import SideBar from "./components/SideBar";
-import Home from "./Home";
-import "./styles/main.css";
-import TopBar from "./components/TopBar";
+import React from 'react';
+import { BrowserRouter as Router, Switch, Route } from 'react-router-dom';
+import SideBar from './components/SideBar';
+import Home from './Home';
+import './styles/main.css';
+import TopBar from './components/TopBar';
 
 export default function App() {
   return (
