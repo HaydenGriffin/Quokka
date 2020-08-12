@@ -1,10 +1,10 @@
-import React, { PureComponent } from 'react'
+import React from 'react';
+import {FC} from 'react';
 
-export default class AvatarIcon extends PureComponent {
-    render() {
-        return (
-            <div className="bg-blue-600 rounded-full h-12 w-12 p-5">
-            </div>
-        )
-    }
-}
+const AvatarIcon: FC = () => {
+    return (
+            <div className="bg-blue-600 rounded-full h-12 w-12 p-5" />
+    )
+  
+  };
+  export default AvatarIcon

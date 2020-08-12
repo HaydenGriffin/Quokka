@@ -1,9 +1,10 @@
-import React, { PureComponent } from 'react'
+import React from 'react';
+import {FC} from 'react';
 
-export default class Button extends PureComponent {
-    render() {
-        return (
-            <button className="bg-black text-white p-4">Create Project</button>
-        )
-    }
+const Button: FC = () => {
+  return (
+        <button className="bg-black text-white p-4">Create Project</button>
+  )
+
 }
+export default Button

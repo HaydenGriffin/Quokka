@@ -1,10 +1,10 @@
-import React, { PureComponent } from 'react'
+import React from 'react'
+import {FC} from 'react';
 import {ReactComponent as ThreeDots} from '../assets/icons/more-horizontal.svg';
 
-export default class ProjectTile extends PureComponent {
-    render() {
-        return (
-            <div className="relative">
+const ProjectTile: FC = () => {
+    return (
+        <div className="relative">
                 <div className="bg-red-600 w-12 h-12 rounded-full text-center absolute top-0 left-0 z-10">
                     <p className="pt-2 text-xl">1</p>
                 </div>
@@ -32,6 +32,9 @@ export default class ProjectTile extends PureComponent {
                 </div>
                 
             </div>
-        )
-    }
-}
+    )
+  
+  }
+export default ProjectTile
+
+
