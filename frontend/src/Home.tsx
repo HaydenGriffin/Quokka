@@ -18,6 +18,14 @@ export default function Home() {
           tracks={24}
           users={3}
         />
+        <Tile
+          notification={false}
+          artist="Taylor swift"
+          set="Redemption"
+          sets={4}
+          tracks={32}
+          users={6}
+        />
       </div>
     </div>
   );
