@@ -6,7 +6,7 @@ import Tile from './components/ProjectTile';
 export default function Home() {
   return (
     <div className="pl-32">
-      <Title title="Projects">
+      <Title title="Artists">
         <Button>Create Project</Button>
       </Title>
       <div className="grid grid-cols-6 pt-32 col-gap-2 row-gap-12">

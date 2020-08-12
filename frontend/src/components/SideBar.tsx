@@ -8,7 +8,7 @@ const IconClassName = 'icon';
 
 const Sidebar: FC = () => {
   return (
-    <div className="w-20 fixed h-screen bg-accent">
+    <div className="w-16 pt-24 fixed h-screen bg-accent">
       <HomeIcon className={IconClassName} />
       <ArtistIcon className="icon-active" />
       <TrackIcon className={IconClassName} />
