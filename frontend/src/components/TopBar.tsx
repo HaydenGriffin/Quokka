@@ -8,7 +8,7 @@ const TopBar: FC = () => {
   return (
     <header className="pr-12 pt-2 h-24 bg-white">
       <div className="flex float-right items-center">
-        <h3>Hayden's Dashboard</h3>
+        <h3>Matt's Artists</h3>
         <Searchbar />
         <Avatar />
         <BellIcon className="w-8 h-8 mr-2" />

@@ -8,9 +8,9 @@ const IconClassName = 'icon';
 
 const Sidebar: FC = () => {
   return (
-    <div className="sidebar">
+    <div className="w-16 pt-24 fixed h-screen bg-accent">
       <HomeIcon className={IconClassName} />
-      <ArtistIcon className={IconClassName} />
+      <ArtistIcon className="icon-active" />
       <TrackIcon className={IconClassName} />
       <SetlistIcon className={IconClassName} />
     </div>

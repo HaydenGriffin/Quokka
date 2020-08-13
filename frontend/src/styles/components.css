@@ -1,12 +1,25 @@
 .sidebar {
-  @apply w-24 fixed h-screen p-8 bg-green-300;
+  @apply w-24 fixed h-screen m-8 bg-accent;
 }
 
-.icon {
-  @apply mb-8;
+.icon,
+.icon-active {
+  @apply px-1 py-6 w-full h-20 cursor-pointer transition duration-300 ease-in-out;
+}
+
+.icon-active {
+  @apply bg-accentfade;
 }
 
 .search-ico {
   top: 0;
   left: 0;
+}
+
+.icon:hover {
+  @apply bg-accentfade;
+}
+
+.btn-primary {
+  @apply bg-black text-white p-4 h-full;
 }
