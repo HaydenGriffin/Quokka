@@ -11,7 +11,7 @@ export default function Tracks() {
       <Artistheader title="Ed Sheeran" setlist="Divide 2019" />
       <div className="pl-32">
         <Title title="Tracks">
-          <TracksIcon className="w-12 h-12 mr-5" />
+          <TracksIcon className="w-12 h-12 mr-12" />
           <Button>Create Track</Button>
         </Title>
         <div className="grid grid-cols-6 pt-32 col-gap-2 row-gap-12">

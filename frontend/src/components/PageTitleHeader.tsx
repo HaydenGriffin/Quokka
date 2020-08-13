@@ -10,7 +10,7 @@ const PageTitleHeader: FC<PropsWithChildren<PageTitleProps>> = ({
 }: PropsWithChildren<PageTitleProps>) => {
   return (
     <div className="flex mt-10 items-center">
-      <h1 className="text-6xl font-bold mr-10">{title}</h1>
+      <h1 className="text-6xl font-bold mr-3">{title}</h1>
       {children}
     </div>
   );
