@@ -10,7 +10,7 @@ export default function Home() {
         <ArtistIcon className="w-12 h-12 mr-12" />
         <Button>Create Artist</Button>
       </Title>
-      <div className="grid grid-cols-6 pt-32 col-gap-2 row-gap-12">
+      <div className="grid grid-cols-6 pt-4 col-gap-2 row-gap-12">
         <Tile
           notification={true}
           artist="Ed Sheeran"

@@ -8,7 +8,7 @@ const Search: FC = () => {
         type="search"
         name="Search"
         id=""
-        className="bg-gray-300 rounded-full p-2 pl-10"
+        className="bg-primary rounded-full p-2 pl-10"
         placeholder="Search..."
       />
       <img

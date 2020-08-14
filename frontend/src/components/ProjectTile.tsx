@@ -29,14 +29,14 @@ const ProjectTile: FC<ProjectTileProps> = ({
         <h3 className="pb-12 font-medium">{set}</h3>
         <section className="flex">
           <div className="flex mr-4">
-            <div className="bg-imag w-1 h-12 mr-2"></div>
+            <div className="bg-imag w-px h-12 mr-2"></div>
             <div>
-              <p className="subtitle">sets</p>
+              <p className="subtitle">Sets</p>
               <h4 className="font-medium">{sets}</h4>
             </div>
           </div>
           <div className="flex">
-            <div className="bg-media w-1 h-12 mr-2"></div>
+            <div className="bg-media w-px h-12 mr-2"></div>
             <div>
               <p className="subtitle">Tracks</p>
               <h4 className="font-medium">{tracks}</h4>

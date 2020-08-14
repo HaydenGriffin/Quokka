@@ -11,7 +11,7 @@ const Sidebar: FC = () => {
     <div className="w-16 pt-24 fixed h-screen bg-accent">
       <HomeIcon className={IconClassName} />
       <a href="/">
-        <ArtistIcon className={IconClassName} />
+        <ArtistIcon className="icon-active" />
       </a>
       <a href="/tracks">
         <TrackIcon className={IconClassName} />
