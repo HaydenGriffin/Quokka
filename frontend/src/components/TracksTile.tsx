@@ -12,7 +12,7 @@ type ProjectTileProps = {
   media: number;
   notch: number;
   imag: number;
-  assigned: number;
+  assigned: string;
 };
 
 const ProjectTile: FC<ProjectTileProps> = ({
@@ -37,21 +37,21 @@ const ProjectTile: FC<ProjectTileProps> = ({
         <h3 className="pb-3 font-medium">{layers}</h3>
         <section className="flex">
           <div className="flex mr-4">
-            <div className="bg-media w-1 h-12 mr-2"></div>
+            <div className="bg-media w-px h-12 mr-2"></div>
             <div>
               <p className="subtitle">Media clip</p>
               <h4 className="font-medium">{media}</h4>
             </div>
           </div>
           <div className="flex mr-4">
-            <div className="bg-notch w-1 h-12 mr-2"></div>
+            <div className="bg-notch w-px h-12 mr-2"></div>
             <div>
               <p className="subtitle">Notch</p>
               <h4 className="font-medium">{notch}</h4>
             </div>
           </div>
           <div className="flex mr-4">
-            <div className="bg-imag w-1 h-12 mr-2"></div>
+            <div className="bg-imag w-px h-12 mr-2"></div>
             <div>
               <p className="subtitle">IMAG</p>
               <h4 className="font-medium">{imag}</h4>
