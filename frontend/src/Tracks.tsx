@@ -8,13 +8,18 @@ import Artistheader from './components/ArtistHeader';
 export default function Tracks() {
   return (
     <div>
-      <Artistheader title="Ed Sheeran" setlist="Divide 2019" />
+      <Artistheader
+        title="Ed Sheeran"
+        setlist="Divide 2019"
+        pagename="Tracks"
+        pageinfo="This is where you can create tracks"
+      />
       <div className="pl-32">
         <Title title="Tracks">
           <TracksIcon className="w-12 h-12 mr-12" />
           <Button>Create Track</Button>
         </Title>
-        <div className="grid grid-cols-6 pt-32 col-gap-2 row-gap-12">
+        <div className="grid grid-cols-6 pt-16 col-gap-2 row-gap-12">
           <TrackTile
             notification={true}
             trackname="Sing"
@@ -23,7 +28,7 @@ export default function Tracks() {
             media={3}
             notch={4}
             imag={2}
-            assigned={1}
+            assigned="Matt Cromwell"
           />
           <TrackTile
             notification={false}
@@ -33,7 +38,7 @@ export default function Tracks() {
             media={3}
             notch={4}
             imag={2}
-            assigned={1}
+            assigned="Hayden Griffin"
           />
         </div>
       </div>
