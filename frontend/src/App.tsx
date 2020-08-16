@@ -5,10 +5,12 @@ import Home from './Home';
 import Tracks from './Tracks';
 import './styles/main.css';
 import TopBar from './components/TopBar';
+import ActivityPanel from './components/ActivityPanel';
 
 export default function App() {
   return (
     <Router>
+      <ActivityPanel />
       <SideBar />
       <TopBar />
       <Switch>
