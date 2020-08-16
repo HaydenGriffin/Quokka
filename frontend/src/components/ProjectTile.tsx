@@ -30,12 +30,14 @@ const ProjectTile: FC<ProjectTileProps> = ({
         <section className="flex">
           <div className="flex mr-4">
             <div className="bg-imag w-px h-12 mr-2"></div>
+
             <div>
               <p className="subtitle">Sets</p>
               <h4 className="font-medium">{sets}</h4>
             </div>
           </div>
           <div className="flex">
+
             <div className="bg-media w-px h-12 mr-2"></div>
             <div>
               <p className="subtitle">Tracks</p>
@@ -48,6 +50,7 @@ const ProjectTile: FC<ProjectTileProps> = ({
             <UsersIcon className="w-6 h-6 mr-2" />
           </div>
           <p className="font-medium">{users}</p>
+
         </div>
       </div>
     </div>

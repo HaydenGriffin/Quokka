@@ -4,6 +4,7 @@
   @apply w-24 fixed h-screen m-8 bg-accent;
 }
 
+
 /* icons basic style */
 .icon,
 .icon-active {
@@ -18,10 +19,12 @@
   top: 0;
   left: 0;
 }
+
 /* icon hover */
 .icon:hover {
   @apply bg-accentfade;
 }
+
 
 /* primary button */
 .btn-primary {

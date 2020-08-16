@@ -1,4 +1,5 @@
 import React, { PropsWithChildren, FC } from 'react';
+import { ReactComponent as ArtistIcon } from '../assets/icons/mic-thicc.svg';
 
 type PageTitleProps = {
   title: string;
