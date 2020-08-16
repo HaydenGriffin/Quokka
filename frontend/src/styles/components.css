@@ -25,7 +25,11 @@
 
 /* primary button */
 .btn-primary {
-  @apply bg-black text-white p-4 h-full;
+  @apply bg-black text-white p-4;
+}
+
+.btn-primary:hover {
+  @apply bg-white text-black;
 }
 /* red notification circle */
 .notify {

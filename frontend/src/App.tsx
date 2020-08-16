@@ -6,10 +6,12 @@ import Tracks from './Tracks';
 import './styles/main.css';
 import TopBar from './components/TopBar';
 import ActivityPanel from './components/ActivityPanel';
+import ProjectModal from './components/ProjectModal';
 
 export default function App() {
   return (
     <Router>
+      <ProjectModal />
       <ActivityPanel />
       <SideBar />
       <TopBar />
