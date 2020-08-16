@@ -25,11 +25,12 @@
 
 /* primary button */
 .btn-primary {
-  @apply bg-black text-white p-4;
+  @apply bg-black text-white p-4 border-black border-0 transition duration-75 ease-in-out;
 }
 
+/* button hover */
 .btn-primary:hover {
-  @apply bg-white text-black;
+  @apply bg-white text-black border-black border;
 }
 /* red notification circle */
 .notify {
