@@ -1,5 +1,7 @@
 import React, { FC } from 'react';
 import { ReactComponent as DropdownIco } from '../assets/icons/chevron-down.svg';
+import { ReactComponent as ThreeDots } from '../assets/icons/more-horizontal.svg';
+import ArtistProperties from './ArtistProperties';
 
 type ArtistHeaderProps = {
   title: string;
@@ -16,7 +18,8 @@ const ArtistHeader: FC<ArtistHeaderProps> = ({
 }: ArtistHeaderProps) => {
   return (
     <div className=" flex w-full">
-      <div className="bg-white pl-32 mt-8 h-64 w-3/4 mr-20 flex">
+      <div className="bg-white pl-32 mt-8 h-64 w-3/4 mr-20 flex relative z-0">
+        <ThreeDots className="absolute top-0 right-0 mr-6 mt-3 cursor-pointer" />
         <div>
           <h1 className="text-6xl font-bold mr-10">{title}</h1>
           <p className="subtitle text-lg">Current Setlist</p>
@@ -25,13 +28,11 @@ const ArtistHeader: FC<ArtistHeaderProps> = ({
             <DropdownIco className="w-8 h-8" />
           </div>
         </div>
-        <div className="grid">
-          <p className="subtitle text-lg">Deadline</p>
-          <h3 className="font-medium text-1xl">26th July 2020</h3>
-          <p className="subtitle text-lg">Video Resolution</p>
-          <h3 className="font-medium text-1xl">2600x4056</h3>
-          <p className="subtitle text-lg">Deadline</p>
-          <h3 className="font-medium text-1xl">26th July 2020</h3>
+        <div className=" grid grid-cols-2 col-gap-1 row-gap-1 items-center">
+          <ArtistProperties Pheader="Sets" Psubheader="6" />
+          <ArtistProperties Pheader="Tracks" Psubheader="24" />
+          <ArtistProperties Pheader="Deadline" Psubheader="28 July 2020" />
+          <ArtistProperties Pheader="Video Resolution" Psubheader="2600x4056" />
         </div>
       </div>
       <div className="bg-accent w-64 h-64 mt-8 text-center p-5">
