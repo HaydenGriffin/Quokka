@@ -2,9 +2,7 @@ import React, { FC } from 'react';
 import { ReactComponent as ThreeDots } from '../assets/icons/more-horizontal.svg';
 import { ReactComponent as UsersIcon } from '../assets/icons/users.svg';
 
-// set properties for tracktile
-
-type ProjectTileProps = {
+type TracksTileProps = {
   notification: boolean;
   trackname: string;
   sections: number;
@@ -15,7 +13,7 @@ type ProjectTileProps = {
   assigned: string;
 };
 
-const ProjectTile: FC<ProjectTileProps> = ({
+const TracksTile: FC<TracksTileProps> = ({
   notification,
   trackname,
   sections,
@@ -24,7 +22,7 @@ const ProjectTile: FC<ProjectTileProps> = ({
   notch,
   imag,
   assigned,
-}: ProjectTileProps) => {
+}: TracksTileProps) => {
   return (
     <div className="relative">
       {notification && <div className="notify"></div>}
@@ -68,4 +66,4 @@ const ProjectTile: FC<ProjectTileProps> = ({
     </div>
   );
 };
-export default ProjectTile;
+export default TracksTile;

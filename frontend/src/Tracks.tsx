@@ -3,12 +3,12 @@ import Button from './components/Button';
 import Title from './components/PageTitleHeader';
 import TrackTile from './components/TracksTile';
 import { ReactComponent as TracksIcon } from './assets/icons/record-thicc.svg';
-import Artistheader from './components/ArtistHeader';
+import ArtistHeader from './components/ArtistHeader';
 
 export default function Tracks() {
   return (
     <div>
-      <Artistheader
+      <ArtistHeader
         title="Ed Sheeran"
         setlist="Divide 2019"
         pagename="Tracks"

@@ -1,6 +1,6 @@
 import React, { FC } from 'react';
-import { ReactComponent as DropdownIco } from '../assets/icons/chevron-down.svg';
-import { ReactComponent as ThreeDots } from '../assets/icons/more-horizontal.svg';
+import { ReactComponent as DropdownIcon } from '../assets/icons/chevron-down.svg';
+import { ReactComponent as ThreeDotsIcon } from '../assets/icons/more-horizontal.svg';
 import ArtistProperties from './ArtistProperties';
 
 type ArtistHeaderProps = {
@@ -19,13 +19,13 @@ const ArtistHeader: FC<ArtistHeaderProps> = ({
   return (
     <div className=" flex w-full">
       <div className="bg-white pl-32 mt-8 h-64 w-3/4 mr-20 flex relative z-0">
-        <ThreeDots className="absolute top-0 right-0 mr-6 mt-3 cursor-pointer" />
+        <ThreeDotsIcon className="absolute top-0 right-0 mr-6 mt-3 cursor-pointer" />
         <div>
           <h1 className="text-6xl font-bold mr-10">{title}</h1>
           <p className="subtitle text-lg">Current Setlist</p>
           <div className="flex items-center">
             <h3 className="font-medium text-3xl mr-3">{setlist}</h3>
-            <DropdownIco className="w-8 h-8" />
+            <DropdownIcon className="w-8 h-8" />
           </div>
         </div>
         <div className=" grid grid-cols-2 col-gap-1 row-gap-1 items-center">
