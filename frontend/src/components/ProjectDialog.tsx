@@ -17,7 +17,7 @@ const ProjectDialog: FC<ProjectDialogProps> = ({
     <DialogOverlay
       isOpen={isOpen}
       onDismiss={closeProjectDialog}
-      className="fixed bg-black bg-opacity-25 inset-0"
+      className="fixed bg-black bg-opacity-25 inset-0 z-20 "
     >
       <DialogContent className="relative w-64 bg-white">
         <button onClick={closeProjectDialog}>
