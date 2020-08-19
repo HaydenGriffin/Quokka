@@ -1,16 +1,16 @@
-import React, { useState, Fragment } from 'react';
+import React, { useState } from 'react';
 import Button from './components/Button';
 import Title from './components/PageTitleHeader';
 import Tile from './components/ProjectTile';
 import { ReactComponent as ArtistIcon } from './assets/icons/mic-thicc.svg';
-import ProjectModal from './components/ProjectDialog';
+import ProjectDialog from './components/ProjectDialog';
 export default function Home() {
   const [showProjectDialog, setShowDialog] = useState(false);
   const openProjectDialog = () => setShowDialog(true);
 
   return (
-    <Fragment>
-      <ProjectModal isOpen={showProjectDialog} setShowDialog={setShowDialog} />
+    <>
+      <ProjectDialog isOpen={showProjectDialog} setShowDialog={setShowDialog} />
       <div className="pl-32">
         <Title title="Artists">
           <ArtistIcon className="w-12 h-12 mr-12" />
@@ -35,6 +35,6 @@ export default function Home() {
           />
         </div>
       </div>
-    </Fragment>
+    </>
   );
 }
