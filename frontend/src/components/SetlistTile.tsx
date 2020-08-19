@@ -24,26 +24,13 @@ const Setlist: FC<SetlistProps> = ({
       {notification && <div className="notify"></div>}
       <div className="tile">
         <ThreeDots className="threedots" />
-        <h1 className="pt-8 text-3xl font-medium">{setname}</h1>
+        <h1 className="pt-8 text-3xl font-medium mb-2">{setname}</h1>
         <p className="subtitle">Version</p>
-        <h3 className="pb-12 font-medium">{version}</h3>
-        <section className="flex">
-          <div className="flex mr-4">
-            <div className="bg-imag w-px h-12 mr-2"></div>
-
-            <div>
-              <p className="subtitle">Date Modified</p>
-              <h4 className="font-medium">{dateModified}</h4>
-            </div>
-          </div>
-          <div className="flex">
-            <div className="bg-media w-px h-12 mr-2"></div>
-            <div>
-              <p className="subtitle">Tracks</p>
-              <h4 className="font-medium">{tracks}</h4>
-            </div>
-          </div>
-        </section>
+        <h3 className="font-medium mb-2">{version}</h3>
+        <p className="subtitle">Date Modified</p>
+        <h4 className="font-medium mb-2">{dateModified}</h4>
+        <p className="subtitle">Tracks</p>
+        <h4 className="font-medium mb-2">{tracks}</h4>
         <div className="flex items-center mt-4">
           <div>
             <UsersIcon className="w-6 h-6 mr-2" />
