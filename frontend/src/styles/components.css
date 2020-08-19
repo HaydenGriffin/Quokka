@@ -72,3 +72,45 @@
 .breadcrumb li a:hover {
   color: black;
 }
+
+.setlist-left-container {
+  margin-top: 25px;
+  width: 60%;
+  padding: 15px;
+  padding-left: 50px;
+  padding-top: 25px;
+}
+
+.setlist-right-container {
+  padding-top: 25px;
+  position: relative;
+  width: 40%;
+  height: 604px;
+  padding: 15px;
+  background: #cfdcd9;
+  text-align: center;
+}
+
+.setlist-item {
+  display: flex;
+  align-items: center;
+  background: white;
+  padding: 10px;
+  margin-bottom: 10px;
+  cursor: pointer;
+  transition: 0.3s ease-in-out;
+}
+
+.setlist-item:hover {
+  background: #e5e5e5;
+}
+
+.setlist-number {
+  color: gray;
+  font-weight: 400;
+  font-size: 28px;
+  margin-right: 10px;
+}
+.setlist-songname {
+  text-align: right;
+}
