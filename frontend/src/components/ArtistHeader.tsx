@@ -6,19 +6,15 @@ import ArtistProperties from './ArtistProperties';
 type ArtistHeaderProps = {
   title: string;
   setlist: string;
-  pagename: string;
-  pageinfo: string;
 };
 
 const ArtistHeader: FC<ArtistHeaderProps> = ({
   title,
   setlist,
-  pagename,
-  pageinfo,
 }: ArtistHeaderProps) => {
   return (
     <div className=" flex w-full">
-      <div className="bg-white pl-32 mt-8 h-64 w-3/4 mr-20 flex relative z-0">
+      <div className="bg-white pl-32 mt-8 h-64 w-3/4 mr-5 flex relative z-0">
         <ThreeDotsIcon className="absolute top-0 right-0 mr-6 mt-3 cursor-pointer" />
         <div>
           <h1 className="text-6xl font-bold mr-10">{title}</h1>
@@ -35,10 +31,7 @@ const ArtistHeader: FC<ArtistHeaderProps> = ({
           <ArtistProperties Pheader="Video Resolution" Psubheader="2600x4056" />
         </div>
       </div>
-      <div className="bg-accent w-64 h-64 mt-8 text-center p-5">
-        <h1>{pagename}</h1>
-        <p>{pageinfo}</p>
-      </div>
+      <div className="bg-accent w-1/2 h-64 mt-8 text-center "></div>
     </div>
   );
 };
