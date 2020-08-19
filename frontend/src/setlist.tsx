@@ -2,22 +2,22 @@ import React from 'react';
 import Button from './components/Button';
 import Title from './components/PageTitleHeader';
 import SetlistTile from './components/SetlistTile';
-import { ReactComponent as TracksIcon } from './assets/icons/record-thicc.svg';
+import { ReactComponent as SetlistIcon } from './assets/icons/list.svg';
 import ArtistHeader from './components/ArtistHeader';
 
-export default function Tracks() {
+export default function Setlist() {
   return (
     <div>
       <ArtistHeader
         title="Ed Sheeran"
         setlist="Divide 2019"
         pagename="Tracks"
-        pageinfo="This is where you can create tracks"
+        pageinfo="This is where you can create setlists"
       />
       <div className="pl-32">
         <Title title="Tracks">
-          <TracksIcon className="w-12 h-12 mr-12" />
-          <Button>Create Track</Button>
+          <SetlistIcon className="w-12 h-12 mr-12" />
+          <Button>Create Setlist</Button>
         </Title>
         <div className="grid grid-cols-6 pt-16 col-gap-2 row-gap-12">
           <SetlistTile
