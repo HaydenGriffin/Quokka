@@ -22,14 +22,60 @@ provider:
     minimumCompressionSize: 1024 # Enable gzip compression for responses > 1 KB
   environment:
     AWS_NODEJS_CONNECTION_REUSE_ENABLED: 1
+    DYNAMODB_TABLENAME: 'quokka'
+    DYNAMODB_REGION: 'eu-west-2'
+  iamRoleStatements:
+    - Effect: Allow
+      Action:
+        - dynamodb:Query
+        - dynamodb:Scan
+        - dynamodb:GetItem
+        - dynamodb:PutItem
+        - dynamodb:UpdateItem
+        - dynamodb:DeleteItem
+      Resource: 'arn:aws:dynamodb:eu-west-2:823663213799:table/quokka'
+    - Effect: Allow
+      Action:
+        - dynamodb:Query
+        - dynamodb:Scan
+      Resource: 'arn:aws:dynamodb:eu-west-2:823663213799:table/quokka/index/*'
 
 functions:
-  hello:
-    handler: handler.hello
+  app:
+    handler: src/handlers/handler.index
     events:
-      - http:
-          method: get
-          path: hello
+      - http: ANY /
+        cors:
+          origin: '*'
+          headers:
+            - Content-Type
+            - X-Amz-Date
+            - Authorization
+            - X-Api-Key
+            - X-Amz-Security-Token
+            - X-Amz-User-Agent
+      - http: 'ANY {proxy+}'
+        cors:
+          origin: '*'
+          headers:
+            - Content-Type
+            - X-Amz-Date
+            - Authorization
+            - X-Api-Key
+            - X-Amz-Security-Token
+            - X-Amz-User-Agent
+  # getArtistByID:
+  #   handler: src/handler.getArtistByID
+  #   events:
+  #     - http:
+  #         method: get
+  #         path: getArtistByID/{uuid}
+  # getAllArtistsByTeamID:
+  #   handler: src/handlers.getAllArtistsByTeamID
+  #   events:
+  #     - http:
+  #         method: get
+  #         path: getAllArtistsByTeamID
 
 resources:
   Resources:
@@ -42,9 +88,9 @@ resources:
             AttributeType: S
           - AttributeName: SK
             AttributeType: N
-          - AttributeName: type
+          - AttributeName: itemType
             AttributeType: S
-          - AttributeName: uuid
+          - AttributeName: ownerUuid
             AttributeType: S
         KeySchema:
           - AttributeName: PK
@@ -55,15 +101,16 @@ resources:
           ReadCapacityUnits: 1
           WriteCapacityUnits: 1
         GlobalSecondaryIndexes:
-          - IndexName: type-uuid-index
+          - IndexName: itemtype-ownerUuid-index
             KeySchema:
-              - AttributeName: type
+              - AttributeName: itemType
                 KeyType: HASH
-              - AttributeName: uuid
+              - AttributeName: ownerUuid
                 KeyType: RANGE
             Projection:
               NonKeyAttributes:
                 - data
+                - artistName
               ProjectionType: INCLUDE
             ProvisionedThroughput:
               ReadCapacityUnits: 1
