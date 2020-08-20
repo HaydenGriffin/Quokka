@@ -2,6 +2,8 @@ import React, { FC, useState } from 'react';
 import { ReactComponent as CloseIco } from '../assets/icons/x.svg';
 import { DialogOverlay, DialogContent } from '@reach/dialog';
 import Button from './Button';
+import ErrorAlert from './ErrorAlert';
+import { on } from 'process';
 
 type ProjectDialogProps = {
   isOpen: boolean;
@@ -18,11 +20,17 @@ const ProjectDialog: FC<ProjectDialogProps> = ({
   const [inputValue, setInputValue] = useState<string>('');
   // function for new artist POST
   const NewArtist = () => {
-    const entry = {
-      artistname: inputValue,
-    };
-    console.log(JSON.stringify(entry));
-    setShowDialog(false);
+    if (inputValue !== '') {
+      const entry = {
+        artistname: inputValue,
+      };
+      console.log(JSON.stringify(entry));
+      setShowDialog(false);
+      alert(inputValue + ' Project Created!');
+      setInputValue('');
+    } else {
+      alert('please fill in ');
+    }
   };
 
   return (
@@ -36,6 +44,7 @@ const ProjectDialog: FC<ProjectDialogProps> = ({
           <CloseIco className="w-6 absolute right-0 mt-0 mr-5" />
         </button>
         <h1 className="text-3xl font-medium mt-3 mb-3">New Artist</h1>
+        <ErrorAlert errormsg="Please add an Artist name" />
         <form>
           <input
             type="text"
