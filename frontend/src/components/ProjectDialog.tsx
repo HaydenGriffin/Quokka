@@ -18,7 +18,11 @@ const ProjectDialog: FC<ProjectDialogProps> = ({
   const [inputValue, setInputValue] = useState<string>('');
   // function for new artist POST
   const NewArtist = () => {
-    console.log(inputValue);
+    const entry = {
+      artistname: inputValue,
+    };
+    console.log(JSON.stringify(entry));
+    setShowDialog(false);
   };
 
   return (
