@@ -21,5 +21,96 @@
 }
 
 .btn-primary {
-  @apply bg-black text-white p-4 h-full;
+  @apply bg-black text-white p-4 border-black border-0 transition duration-75 ease-in-out;
+}
+
+.btn-primary:hover {
+  @apply bg-white text-black border-black border;
+}
+
+.notify {
+  @apply bg-notify w-8 h-8 rounded-full text-center absolute top-0 left-0 z-10 shadow-xl;
+}
+
+.tile {
+  @apply bg-white rounded-md w-64 p-5 relative ml-3 mt-3 cursor-pointer transition duration-150 ease-in-out shadow-md;
+}
+
+.threedots {
+  @apply absolute top-0 right-0 mr-4 mt-2 cursor-pointer;
+}
+
+.subtitle {
+  @apply text-xs text-gray-600 font-light;
+}
+
+.breadcrumb {
+  padding: 10px 16px;
+  list-style: none;
+  text-align: right;
+}
+
+.breadcrumb li {
+  display: inline;
+  font-size: 18px;
+}
+
+/* Add a slash symbol (/) before/behind each list item */
+.breadcrumb li + li:before {
+  padding: 8px;
+  color: black;
+  content: '/\00a0';
+}
+
+/* Add a color to all links inside the list */
+.breadcrumb li a {
+  color: #bebebe;
+  text-decoration: none;
+}
+
+/* Add a color on mouse-over */
+.breadcrumb li a:hover {
+  color: black;
+}
+
+.setlist-left-container {
+  margin-top: 25px;
+  width: 60%;
+  padding: 15px;
+  padding-left: 50px;
+  padding-top: 25px;
+}
+
+.setlist-right-container {
+  padding-top: 25px;
+  position: relative;
+  width: 40%;
+  height: 604px;
+  padding: 15px;
+  background: #cfdcd9;
+  text-align: center;
+}
+
+.setlist-item {
+  display: flex;
+  align-items: center;
+  background: white;
+  padding: 10px;
+  margin-bottom: 10px;
+  cursor: pointer;
+  transition: 0.3s ease-in-out;
+}
+
+.setlist-item:hover {
+  background: #e5e5e5;
+}
+
+.setlist-number {
+  color: gray;
+  font-weight: 400;
+  font-size: 28px;
+  margin-right: 10px;
+}
+.setlist-songname {
+  text-align: right;
 }

@@ -3,6 +3,8 @@ import Button from './components/Button';
 import Title from './components/PageTitleHeader';
 import Tile from './components/ProjectTile';
 import { Api } from './api/api';
+import { ReactComponent as ArtistIcon } from './assets/icons/mic-thicc.svg';
+import ProjectDialog from './components/ProjectDialog';
 import axios from 'axios';
 
 const api = new Api(
@@ -10,6 +12,9 @@ const api = new Api(
 );
 
 export default class Home extends Component {
+   const [showProjectDialog, setShowDialog] = useState(false);	
+	 const openProjectDialog = () => setShowDialog(true);
+    
   state = {
     artists: [],
   };
@@ -29,9 +34,11 @@ export default class Home extends Component {
 
   render() {
     return (
+      <ProjectDialog isOpen={showProjectDialog} setShowDialog={setShowDialog} />
       <div className="pl-32">
         <Title title="Artists">
-          <Button>Create Artist</Button>
+          <ArtistIcon className="w-12 h-12 mr-12" />	
+	          <Button onClick={openProjectDialog}>Create Artist</Button>
         </Title>
         <div className="grid grid-cols-6 pt-32 col-gap-2 row-gap-12">
           {this.state.artists.map((artist: any) => (
@@ -48,4 +55,3 @@ export default class Home extends Component {
       </div>
     );
   }
-}

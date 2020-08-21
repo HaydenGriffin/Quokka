@@ -1,42 +1,31 @@
 import React from 'react';
 import { BrowserRouter as Router, Switch, Route } from 'react-router-dom';
 import SideBar from './components/SideBar';
+// pages
 import Home from './Home';
+import Tracks from './Tracks';
+import Setlist from './setlist';
 import './styles/main.css';
 import TopBar from './components/TopBar';
+import ActivityPanel from './components/ActivityPanel';
 
 export default function App() {
   return (
     <Router>
+      <ActivityPanel />
       <SideBar />
       <TopBar />
       <Switch>
         <Route exact path="/">
           <Home />
         </Route>
-        <Route path="/about">
-          <About />
+        <Route path="/tracks">
+          <Tracks />
         </Route>
-        <Route path="/dashboard">
-          <Dashboard />
+        <Route path="/setlist">
+          <Setlist />
         </Route>
       </Switch>
     </Router>
-  );
-}
-
-function About() {
-  return (
-    <div className="pt-20">
-      <h2>About</h2>
-    </div>
-  );
-}
-
-function Dashboard() {
-  return (
-    <div className="pt-20">
-      <h2>Dashboard</h2>
-    </div>
   );
 }
