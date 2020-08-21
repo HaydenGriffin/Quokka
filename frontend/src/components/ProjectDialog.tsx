@@ -3,7 +3,11 @@ import { ReactComponent as CloseIco } from '../assets/icons/x.svg';
 import { DialogOverlay, DialogContent } from '@reach/dialog';
 import Button from './Button';
 import ErrorAlert from './ErrorAlert';
-import { on } from 'process';
+import { Api } from '../api/api';
+
+const api = new Api(
+  'https://8a03fs0g30.execute-api.eu-west-2.amazonaws.com/dev'
+);
 
 type ProjectDialogProps = {
   isOpen: boolean;
@@ -21,10 +25,7 @@ const ProjectDialog: FC<ProjectDialogProps> = ({
   // function for new artist POST
   const NewArtist = () => {
     if (inputValue !== '') {
-      const entry = {
-        artistname: inputValue,
-      };
-      console.log(JSON.stringify(entry));
+      api.createArtist('Matt', { artistName: inputValue });
       setShowDialog(false);
       alert(inputValue + ' Project Created!');
       setInputValue('');
