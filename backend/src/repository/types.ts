@@ -1,5 +1,12 @@
-export interface Repository<T> {
-  findByPK(pk: string, sk: number): Promise<T>;
-  findByGSI(uuid: string): Promise<T[]>;
-  insert(toInsert: T): Promise<any>;
+export enum RecordType {
+  artist = 'artist',
+  track = 'track',
+}
+
+export class Item {
+  PK: string;
+  SK: number;
+  ownerUuid: string;
+  recordTypeParentUuids: string;
+  data: JSON;
 }
