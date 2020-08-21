@@ -8,12 +8,7 @@ import ArtistHeader from './components/ArtistHeader';
 export default function Tracks() {
   return (
     <div>
-      <ArtistHeader
-        title="Ed Sheeran"
-        setlist="Divide 2019"
-        pagename="Tracks"
-        pageinfo="This is where you can create tracks"
-      />
+      <ArtistHeader title="Ed Sheeran" setlist="Divide 2019" />
       <div className="pl-32">
         <Title title="Tracks">
           <TracksIcon className="w-12 h-12 mr-12" />

@@ -1,17 +1,16 @@
 import React, { FC } from 'react';
 import { ReactComponent as DropdownIcon } from '../assets/icons/chevron-down.svg';
 import { ReactComponent as ThreeDotsIcon } from '../assets/icons/more-horizontal.svg';
-import ArtistProperties from './ArtistProperties';
 
-type ArtistHeaderProps = {
+type SetlistHeaderProps = {
   title: string;
   setlist: string;
 };
 
-const ArtistHeader: FC<ArtistHeaderProps> = ({
+const SetlistHeader: FC<SetlistHeaderProps> = ({
   title,
   setlist,
-}: ArtistHeaderProps) => {
+}: SetlistHeaderProps) => {
   return (
     <div className=" flex w-full">
       <div className="bg-white pl-32 mt-8 h-64 w-3/4 mr-5 flex relative z-0">
@@ -24,15 +23,9 @@ const ArtistHeader: FC<ArtistHeaderProps> = ({
             <DropdownIcon className="w-8 h-8" />
           </div>
         </div>
-        <div className=" grid grid-cols-2 col-gap-1 row-gap-1 items-center">
-          <ArtistProperties Pheader="Sets" Psubheader="6" />
-          <ArtistProperties Pheader="Tracks" Psubheader="24" />
-          <ArtistProperties Pheader="Deadline" Psubheader="28 July 2020" />
-          <ArtistProperties Pheader="Video Resolution" Psubheader="2600x4056" />
-        </div>
       </div>
       <div className="bg-accent w-1/2 h-64 mt-8 text-center "></div>
     </div>
   );
 };
-export default ArtistHeader;
+export default SetlistHeader;
