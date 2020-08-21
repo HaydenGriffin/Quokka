@@ -29,7 +29,6 @@ const ProjectDialog: FC<ProjectDialogProps> = ({
       alert(inputValue + ' Project Created!');
       setInputValue('');
     } else {
-      alert('please fill in ');
     }
   };
 
@@ -54,9 +53,10 @@ const ProjectDialog: FC<ProjectDialogProps> = ({
             onChange={(ev: React.ChangeEvent<HTMLInputElement>): void =>
               setInputValue(ev.target.value)
             }
+            required
           />
+          <Button onClick={NewArtist}>Create Artist</Button>
         </form>
-        <Button onClick={NewArtist}>Create Artist</Button>
       </DialogContent>
     </DialogOverlay>
   );
