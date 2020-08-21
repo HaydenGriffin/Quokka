@@ -3,7 +3,6 @@ import { ReactComponent as CloseIco } from '../assets/icons/x.svg';
 import { DialogOverlay, DialogContent } from '@reach/dialog';
 import Button from './Button';
 import ErrorAlert from './ErrorAlert';
-import { on } from 'process';
 import { Api } from '../api/api';
 
 const api = new Api(

@@ -18,8 +18,6 @@ export default function Home() {
   useEffect(() => {
     const fetchDataAsync = async () => {
       const result = await api.getArtists('Matt');
-      console.log(result.data);
-
       setArtists(result.data);
     };
     fetchDataAsync();

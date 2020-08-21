@@ -39,7 +39,6 @@ provider:
         - dynamodb:Query
         - dynamodb:Scan
       Resource: 'arn:aws:dynamodb:eu-west-2:823663213799:table/quokka/index/*'
-
 functions:
   app:
     handler: src/handlers/handler.index
@@ -64,19 +63,6 @@ functions:
             - X-Api-Key
             - X-Amz-Security-Token
             - X-Amz-User-Agent
-  # getArtistByID:
-  #   handler: src/handler.getArtistByID
-  #   events:
-  #     - http:
-  #         method: get
-  #         path: getArtistByID/{uuid}
-  # getAllArtistsByTeamID:
-  #   handler: src/handlers.getAllArtistsByTeamID
-  #   events:
-  #     - http:
-  #         method: get
-  #         path: getAllArtistsByTeamID
-
 resources:
   Resources:
     quokkaTable:
