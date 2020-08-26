@@ -1,7 +1,4 @@
-import {
-  createNewArtistHandler,
-  createFindArtistsByGSIHandler,
-} from './artist';
+import { createNewArtistHandler, createFindUserArtistsHandler } from './artist';
 import { DynamoDB } from 'aws-sdk';
 import { ArtistRepository } from '../../repository/artist';
 
@@ -19,6 +16,6 @@ const tableName = process.env.DYNAMODB_TABLENAME || 'quokka';
 const artistRepo = new ArtistRepository(tableName, dynamoDB);
 
 const newArtistHandler = createNewArtistHandler(artistRepo);
-const findArtistsByGSIHandler = createFindArtistsByGSIHandler(artistRepo);
+const findArtistsByGSIHandler = createFindUserArtistsHandler(artistRepo);
 
 export { newArtistHandler, findArtistsByGSIHandler };
