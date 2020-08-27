@@ -1,7 +1,8 @@
 import {
   createNewTourMemberHandler,
-  createFindUserMembersHandler,
-  createFindUserTourMembersHandler,
+  createFindOwnerMembersHandler,
+  createFindOwnerTourMembersHandler,
+  createFindUserTours,
 } from './tourMember';
 import { DynamoDB } from 'aws-sdk';
 import { TourMemberRepository } from '../../repository/tourMember';
@@ -20,11 +21,13 @@ const tableName = process.env.DYNAMODB_TABLENAME || 'quokka';
 const tourRepo = new TourMemberRepository(tableName, dynamoDB);
 
 const newTourMemberHandler = createNewTourMemberHandler(tourRepo);
-const findUserMembersHandler = createFindUserMembersHandler(tourRepo);
-const findUserTourMembersHandler = createFindUserTourMembersHandler(tourRepo);
+const findUserMembersHandler = createFindOwnerMembersHandler(tourRepo);
+const findUserTourMembersHandler = createFindOwnerTourMembersHandler(tourRepo);
+const findUserTours = createFindUserTours(tourRepo);
 
 export {
   newTourMemberHandler,
   findUserMembersHandler,
   findUserTourMembersHandler,
+  findUserTours,
 };

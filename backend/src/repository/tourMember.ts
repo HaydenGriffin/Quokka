@@ -1,16 +1,11 @@
-import { v4 as uuidv4 } from 'uuid';
-import { Item, RecordType, Repository } from './types';
+import { RecordType, Repository } from './types';
 import { DocumentClient } from 'aws-sdk/clients/dynamodb';
 
-class TourMemberItem extends Item {
-  constructor(ownerUuid: string, tourUuid: string, data: JSON) {
-    super();
-    this.PK = uuidv4();
-    this.SK = Date.now();
-    this.ownerUuid = ownerUuid;
-    this.recordTypeParentUuids = `${RecordType.MEMBER}_${tourUuid}`;
-    this.data = data;
-  }
+interface TourMemberItem {
+  pk: string;
+  sk: string;
+  ownerUuid: string;
+  tourUuid: string;
 }
 
 class TourMemberRepository implements Repository<TourMemberItem> {
@@ -22,71 +17,85 @@ class TourMemberRepository implements Repository<TourMemberItem> {
     this.dynamoDB = dynamoDB;
   }
 
-  async findByPK(PK: string, SK: number): Promise<TourMemberItem> {
+  async findByPK(pk: string, sk: string): Promise<TourMemberItem> {
     const params = {
       TableName: this.tableName,
       Key: {
-        PK,
-        SK,
+        pk,
+        sk,
       },
     };
     return (await this.dynamoDB.get(params).promise()).Item as TourMemberItem;
   }
 
-  insert(toInsert: Item): Promise<any> {
+  async findUserTours(userUuid: string): Promise<TourMemberItem[]> {
+    const params = {
+      TableName: this.tableName,
+      KeyConditionExpression:
+        'pk = :userUuid and begins_with(sk = :recordType)',
+      ExpressionAttributeValues: {
+        ':userUuid': userUuid,
+        ':recordType': RecordType.MEMBER,
+      },
+    };
+    return (await this.dynamoDB.query(params).promise())
+      .Items as TourMemberItem[];
+  }
+
+  insert(toInsert: TourMemberItem): Promise<any> {
     const params = {
       TableName: this.tableName,
       Item: {
-        PK: toInsert.PK,
-        SK: toInsert.SK,
+        pk: toInsert.pk,
+        sk: toInsert.sk,
         ownerUuid: toInsert.ownerUuid,
-        recordTypeParentUuids: toInsert.recordTypeParentUuids,
-        data: toInsert.data,
+        recordTypeParentUuid: toInsert.tourUuid,
+        ...toInsert,
       },
     };
 
     return this.dynamoDB.put(params).promise();
   }
 
-  async findByGSIPK(ownerUuid: string): Promise<TourMemberItem[]> {
+  async findByOwner(ownerUuid: string): Promise<TourMemberItem[]> {
     const params = {
       TableName: this.tableName,
-      IndexName: 'ownerUuid-recordTypeParentUuids_index',
+      IndexName: 'ownerUuid-recordTypeParentUuid_index',
       KeyConditionExpression:
-        'ownerUuid = :ownerUuid and begins_with(recordTypeParentUuids, :recordTypeParentUuids)',
+        'ownerUuid = :ownerUuid and begins_with(recordTypeParentUuid, :recordTypeParentUuid)',
       ExpressionAttributeValues: {
         ':ownerUuid': ownerUuid,
-        ':recordTypeParentUuids': RecordType.MEMBER,
+        ':recordTypeParentUuid': RecordType.MEMBER,
       },
     };
     return (await this.dynamoDB.query(params).promise())
       .Items as TourMemberItem[];
   }
 
-  async findByGSIPKSK(
+  async findByOwnerTour(
     ownerUuid: string,
     tourUuid: string
   ): Promise<TourMemberItem[]> {
     const params = {
       TableName: this.tableName,
-      IndexName: 'ownerUuid-recordTypeParentUuids_index',
+      IndexName: 'ownerUuid-recordTypeParentUuid_index',
       KeyConditionExpression:
-        'ownerUuid = :ownerUuid and recordTypeParentUuids = :recordTypeParentUuids',
+        'ownerUuid = :ownerUuid and recordTypeParentUuid = :recordTypeParentUuid',
       ExpressionAttributeValues: {
         ':ownerUuid': ownerUuid,
-        ':recordTypeParentUuids': `${RecordType.MEMBER}_${tourUuid}`,
+        ':recordTypeParentUuid': `${RecordType.MEMBER}_${tourUuid}`,
       },
     };
     return (await this.dynamoDB.query(params).promise())
       .Items as TourMemberItem[];
   }
 
-  delete(PK: string, SK: number): Promise<any> {
+  delete(pk: string, sk: string): Promise<any> {
     const params = {
       TableName: this.tableName,
       Key: {
-        PK,
-        SK,
+        pk,
+        sk,
       },
     };
 

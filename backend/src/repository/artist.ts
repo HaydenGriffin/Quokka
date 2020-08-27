@@ -1,16 +1,11 @@
-import { v4 as uuidv4 } from 'uuid';
-import { Item, RecordType, Repository } from './types';
+import { RecordType, Repository } from './types';
 import { DocumentClient } from 'aws-sdk/clients/dynamodb';
 
-class ArtistItem extends Item {
-  constructor(ownerUuid: string, data: JSON) {
-    super();
-    this.PK = uuidv4();
-    this.SK = Date.now();
-    this.ownerUuid = ownerUuid;
-    this.recordTypeParentUuids = RecordType.ARTIST;
-    this.data = data;
-  }
+interface ArtistItem {
+  pk: string;
+  sk: string;
+  ownerUuid: string;
+  artistName: string;
 }
 
 class ArtistRepository implements Repository<ArtistItem> {
@@ -22,52 +17,52 @@ class ArtistRepository implements Repository<ArtistItem> {
     this.dynamoDB = dynamoDB;
   }
 
-  async findByPK(PK: string, SK: number): Promise<ArtistItem> {
+  async findByPK(pk: string, sk: string): Promise<ArtistItem> {
     const params = {
       TableName: this.tableName,
       Key: {
-        PK,
-        SK,
+        pk,
+        sk,
       },
     };
     return (await this.dynamoDB.get(params).promise()).Item as ArtistItem;
   }
 
-  insert(toInsert: Item): Promise<any> {
+  insert(toInsert: ArtistItem): Promise<any> {
     const params = {
       TableName: this.tableName,
       Item: {
-        PK: toInsert.PK,
-        SK: toInsert.SK,
+        pk: toInsert.pk,
+        sk: toInsert.sk,
         ownerUuid: toInsert.ownerUuid,
-        recordTypeParentUuids: toInsert.recordTypeParentUuids,
-        data: toInsert.data,
+        recordTypeParentUuid: RecordType.ARTIST,
+        ...toInsert,
       },
     };
 
     return this.dynamoDB.put(params).promise();
   }
 
-  async findByGSIPK(ownerUuid: string): Promise<ArtistItem[]> {
+  async findByOwner(ownerUuid: string): Promise<ArtistItem[]> {
     const params = {
       TableName: this.tableName,
-      IndexName: 'ownerUuid-recordTypeParentUuids_index',
+      IndexName: 'ownerUuid-recordTypeParentUuid_index',
       KeyConditionExpression:
-        'ownerUuid = :ownerUuid and recordTypeParentUuids = :recordTypeParentUuids',
+        'ownerUuid = :ownerUuid and recordTypeParentUuid = :recordType',
       ExpressionAttributeValues: {
         ':ownerUuid': ownerUuid,
-        ':recordTypeParentUuids': RecordType.ARTIST,
+        ':recordType': RecordType.ARTIST,
       },
     };
     return (await this.dynamoDB.query(params).promise()).Items as ArtistItem[];
   }
 
-  delete(PK: string, SK: number): Promise<any> {
+  delete(pk: string, sk: string): Promise<any> {
     const params = {
       TableName: this.tableName,
       Key: {
-        PK,
-        SK,
+        pk,
+        sk,
       },
     };
 

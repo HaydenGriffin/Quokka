@@ -34,7 +34,7 @@ export default function Home() {
         <div className="grid grid-cols-6 pt-32 col-gap-2 row-gap-12">
           {artists.map((artist: any) => (
             <Tile
-              key={artist.PK}
+              key={artist.pk}
               notification={true}
               artist={artist.artistName}
               set="Live Set"
