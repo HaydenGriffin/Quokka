@@ -5,6 +5,7 @@ interface TourMemberItem {
   pk: string;
   sk: string;
   ownerUuid: string;
+  emailAddress: string;
   tourUuid: string;
 }
 
@@ -49,7 +50,7 @@ class TourMemberRepository implements Repository<TourMemberItem> {
         pk: toInsert.pk,
         sk: toInsert.sk,
         ownerUuid: toInsert.ownerUuid,
-        recordTypeParentUuid: toInsert.tourUuid,
+        recordTypeParentUuid: `${RecordType.MEMBER}_${toInsert.tourUuid}`,
         ...toInsert,
       },
     };

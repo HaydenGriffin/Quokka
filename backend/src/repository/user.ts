@@ -8,7 +8,6 @@ interface User {
   firstName: string;
   password: string;
   emailAddress: string;
-  apikey?: string;
   registeredAt?: string;
   enabled: boolean;
 }

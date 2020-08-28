@@ -2,13 +2,17 @@ import { Handler, Request, Response } from 'express';
 import { TourItem, TourRepository } from '../../repository/tour';
 import { v4 as uuidv4 } from 'uuid';
 import dayjs from 'dayjs';
+import { User } from '../../repository/user';
 
 export const createNewTourHandler = (tourRepo: TourRepository): Handler => {
   return async (req: Request, res: Response) => {
-    const { ownerUuid, artistUuid } = req.body;
+    const { artistUuid, tourName } = req.body;
+    const user = req['user'] as User;
+
     let tourToInsert = <TourItem>{};
-    tourToInsert.ownerUuid = ownerUuid;
+    tourToInsert.ownerUuid = user.emailAddress;
     tourToInsert.artistUuid = artistUuid;
+    tourToInsert.tourName = tourName;
     tourToInsert.pk = uuidv4();
     tourToInsert.sk = dayjs().format();
 
@@ -22,9 +26,9 @@ export const createFindUserToursHandler = (
   tourRepo: TourRepository
 ): Handler => {
   return async (req: Request, res: Response) => {
-    const { ownerUuid } = req.params;
+    const user = req['user'] as User;
 
-    let result = await tourRepo.findByOwner(ownerUuid);
+    let result = await tourRepo.findByOwner(user.emailAddress);
 
     res.status(200).json(result);
   };
@@ -34,9 +38,13 @@ export const createFindUserArtistToursHandler = (
   tourRepo: TourRepository
 ): Handler => {
   return async (req: Request, res: Response) => {
-    const { ownerUuid, artistUuid } = req.params;
+    const { artistUuid } = req.params;
+    const user = req['user'] as User;
 
-    let result = await tourRepo.findByOwnerArtist(ownerUuid, artistUuid);
+    let result = await tourRepo.findByOwnerArtist(
+      user.emailAddress,
+      artistUuid
+    );
 
     res.status(200).json(result);
   };

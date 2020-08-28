@@ -1,15 +1,15 @@
 import { UserRepository } from '../../repository/user';
 
-//export * from './verifyUser';
+export * from './verifyUser';
 export * from './registerUser';
-//export * from './login';
+export * from './login';
 
-//import { createLoginHandler } from './login';
+import { createLoginHandler } from './login';
 import { createRegisterUserHandler } from './registerUser';
-//import { verifyUserMiddleware } from './verifyUser';
+import { verifyUserMiddleware } from './verifyUser';
 import { DynamoDB } from 'aws-sdk';
-import { ApiKeyRepository } from '../../repository/apikey';
 import { RequiredFieldsValidator } from '../../validator/requiredFieldsValidator';
+import { createLogoutHandler } from './logout';
 
 const tableName = process.env.DYNAMODB_TABLENAME || 'quokka';
 const dynamodbOptions = () => {
@@ -23,7 +23,6 @@ const dynamodbOptions = () => {
 
 const dynamoDb = new DynamoDB.DocumentClient(dynamodbOptions());
 const userRepo = new UserRepository(tableName, dynamoDb);
-const apikeyRepo = new ApiKeyRepository(tableName, dynamoDb);
 
 const loginRequiredFields = new RequiredFieldsValidator([
   'emailAddress',
@@ -36,10 +35,17 @@ const registerRequiredFields = new RequiredFieldsValidator([
   'passwordConfirm',
 ]);
 
+const loginHandler = createLoginHandler(loginRequiredFields, userRepo);
+const logoutHandler = createLogoutHandler();
 const registerUserHandler = createRegisterUserHandler(
   registerRequiredFields,
-  userRepo,
-  apikeyRepo
+  userRepo
 );
 
-export { registerUserHandler };
+export {
+  loginHandler,
+  logoutHandler,
+  registerUserHandler,
+  verifyUserMiddleware,
+};
+export { cleanUser } from '../../data/cleanUser';

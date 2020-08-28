@@ -1,6 +1,5 @@
 export enum RecordType {
   ACCOUNT = 'ACCOUNT',
-  APIKEY = 'APIKEY',
   ARTIST = 'ARTIST',
   TOUR = 'TOUR',
   MEMBER = 'MEMBER',

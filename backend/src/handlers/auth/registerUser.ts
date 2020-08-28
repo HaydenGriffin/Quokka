@@ -5,15 +5,13 @@ import { v4 } from 'uuid';
 import { User } from '../../repository/user';
 import { RequiredFieldsValidator } from '../../validator/requiredFieldsValidator';
 import { signToken } from './signToken';
-import { ApiKey, ApiKeyRepository } from '../../repository/apikey';
 
 import { Request, Response, Router, Handler } from 'express';
 import { Repository } from '../../repository/types';
 
 export const createRegisterUserHandler = (
   requestValidator: RequiredFieldsValidator,
-  userRepo: Repository<User>,
-  apikeyRepo: Repository<ApiKey>
+  userRepo: Repository<User>
 ): Handler => {
   return async (req: Request, res: Response) => {
     const validationErrors = requestValidator.validate(req.body);
@@ -27,7 +25,7 @@ export const createRegisterUserHandler = (
 
     let token: string;
     try {
-      token = await registerUser(req.body, userRepo, apikeyRepo);
+      token = await registerUser(req.body, userRepo);
     } catch (err) {
       if (err.message === 'Email address already in use') {
         return res.status(400).json({ message: err.message });
@@ -44,8 +42,7 @@ export const createRegisterUserHandler = (
 
 async function registerUser(
   newUser: User,
-  userRepo: Repository<User>,
-  apikeyRepo: Repository<ApiKey>
+  userRepo: Repository<User>
 ): Promise<string> {
   let user: User = await userRepo.findByPK(newUser.emailAddress);
   if (user) {
@@ -60,24 +57,8 @@ async function registerUser(
   };
 
   user.password = await bcrypt.hash(newUser.password, 10);
-  const apikey = createApiKey(newUser);
-  user.apikey = apikey.apikey;
-
-  await Promise.all([userRepo.insert(user), apikeyRepo.insert(apikey)]);
-
+  await userRepo.insert(user);
   delete user.password;
 
   return signToken(user, 84600);
-}
-
-function createApiKey(user: User) {
-  const key = v4();
-  const apikey: ApiKey = {
-    apikey: key,
-    createdAt: dayjs().format(),
-    enabled: true,
-    ownerEmail: user.emailAddress,
-  };
-
-  return apikey;
 }
