@@ -8,11 +8,13 @@ import Setlist from './setlist';
 import './styles/main.css';
 import TopBar from './components/TopBar';
 import ActivityPanel from './components/ActivityPanel';
+import Register from './register';
 
 export default function App() {
   return (
     <Router>
-      <ActivityPanel />
+      <Register />
+      {/* <ActivityPanel />
       <SideBar />
       <TopBar />
       <Switch>
@@ -25,7 +27,7 @@ export default function App() {
         <Route path="/setlist">
           <Setlist />
         </Route>
-      </Switch>
+      </Switch> */}
     </Router>
   );
 }
