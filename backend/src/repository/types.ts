@@ -1,12 +1,12 @@
 export enum RecordType {
-  artist = 'artist',
-  track = 'track',
+  ACCOUNT = 'ACCOUNT',
+  ARTIST = 'ARTIST',
+  TOUR = 'TOUR',
+  MEMBER = 'MEMBER',
+  TRACK = 'TRACK',
 }
-
-export class Item {
-  PK: string;
-  SK: number;
-  ownerUuid: string;
-  recordTypeParentUuids: string;
-  data: JSON;
+export interface Repository<T> {
+  findByPK(pk: string, sk?: string): Promise<T>;
+  insert(toInsert: T): Promise<any>;
+  delete(pk: string, sk?: string): Promise<any>;
 }
