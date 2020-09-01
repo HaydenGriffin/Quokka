@@ -1,11 +1,7 @@
 import bcrypt from 'bcryptjs';
-import dayjs from 'dayjs';
-import { v4 } from 'uuid';
-
 import { User } from '../../repository/user';
 import { RequiredFieldsValidator } from '../../validator/requiredFieldsValidator';
 import { signToken } from './signToken';
-
 import { Request, Response, Router, Handler } from 'express';
 import { Repository } from '../../repository/types';
 

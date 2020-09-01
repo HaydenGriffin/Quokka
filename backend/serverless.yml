@@ -74,7 +74,7 @@ resources:
             AttributeType: S
           - AttributeName: sk
             AttributeType: S
-          - AttributeName: ownerUuid
+          - AttributeName: ownerEmailAddress
             AttributeType: S
           - AttributeName: recordTypeParentUuid
             AttributeType: S
@@ -87,9 +87,9 @@ resources:
           ReadCapacityUnits: 1
           WriteCapacityUnits: 1
         GlobalSecondaryIndexes:
-          - IndexName: ownerUuid-recordTypeParentUuid_index
+          - IndexName: ownerEmailAddress-recordTypeParentUuid_index
             KeySchema:
-              - AttributeName: ownerUuid
+              - AttributeName: ownerEmailAddress
                 KeyType: HASH
               - AttributeName: recordTypeParentUuid
                 KeyType: RANGE

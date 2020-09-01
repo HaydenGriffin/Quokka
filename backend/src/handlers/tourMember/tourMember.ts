@@ -13,13 +13,13 @@ export const createNewTourMemberHandler = (
 ): Handler => {
   return async (req: Request, res: Response) => {
     const { tourUuid } = req.params;
-    const { userUuid } = req.body;
+    const { userEmailAddress } = req.body;
     const user = req['user'] as User;
     let tourMemberToInsert = <TourMemberItem>{};
-    tourMemberToInsert.pk = userUuid;
+    tourMemberToInsert.pk = userEmailAddress;
     tourMemberToInsert.sk = `${RecordType.MEMBER}_${dayjs().format()}`;
     tourMemberToInsert.tourUuid = tourUuid;
-    tourMemberToInsert.ownerUuid = user.emailAddress;
+    tourMemberToInsert.ownerEmailAddress = user.emailAddress;
 
     let result = await tourMemberRepo.insert(tourMemberToInsert);
 
@@ -28,12 +28,12 @@ export const createNewTourMemberHandler = (
 };
 
 export const createFindOwnerMembersHandler = (
-  tourRepo: TourMemberRepository
+  tourMemberRepo: TourMemberRepository
 ): Handler => {
   return async (req: Request, res: Response) => {
     const user = req['user'] as User;
 
-    let result = await tourRepo.findByOwner(user.emailAddress);
+    let result = await tourMemberRepo.findByOwner(user.emailAddress);
 
     res.status(200).json(result);
   };
@@ -57,7 +57,6 @@ export const createFindUserTours = (
 ): Handler => {
   return async (req: Request, res: Response) => {
     const user = req['user'] as User;
-
     let result = await tourRepo.findUserTours(user.emailAddress);
 
     res.status(200).json(result);

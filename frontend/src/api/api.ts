@@ -1,22 +1,13 @@
-import axios, { AxiosResponse } from 'axios';
+import { ArtistAPI } from './artist/artist';
+import { TourAPI } from './tour/tour';
+import { TourMemberAPI } from './tourMember/tourMember';
+import { UserAPI } from './user/user';
 
-export class Api {
-  readonly baseUrl: string;
+const baseUrl = 'https://casbp529v8.execute-api.eu-west-2.amazonaws.com/dev';
 
-  constructor(baseUrl: string) {
-    this.baseUrl = baseUrl;
-  }
+const artist = new ArtistAPI(baseUrl);
+const tour = new TourAPI(baseUrl);
+const tourMember = new TourMemberAPI(baseUrl);
+const user = new UserAPI(baseUrl);
 
-  async createArtist(ownerUuid: string, data: any): Promise<string> {
-    const { res } = await axios.post(`${this.baseUrl}/api/artist`, {
-      ownerUuid: ownerUuid,
-      data: data,
-    });
-    return res;
-  }
-
-  async getArtists(ownerUuid: string): Promise<AxiosResponse> {
-    const result = await axios.get(`${this.baseUrl}/api/artist/${ownerUuid}`);
-    return result;
-  }
-}
+export { artist, tour, tourMember, user };

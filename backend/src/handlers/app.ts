@@ -8,21 +8,20 @@ import {
   verifyUserMiddleware,
   logoutHandler,
 } from './auth/handler';
-import { newArtistHandler, findArtistsByGSIHandler } from './artist/handler';
+import { newArtistHandler, findArtistsByOwnerHandler } from './artist/handler';
 import {
   newTourHandler,
-  findUserToursHandler,
-  findUserArtistToursHandler,
+  findOwnerToursHandler,
+  findOwnerArtistToursHandler,
 } from './tour/handler';
 import {
   newTourMemberHandler,
-  findUserMembersHandler,
-  findUserTourMembersHandler,
-} from './tour-member/handler';
+  findOwnerMembersHandler,
+  findOwnerTourMembersHandler,
+  findUserTours,
+} from './tourMember/handler';
 import * as http from 'http';
 import { getUserHandler } from './user/handler';
-import { UserRepository } from '../repository/user';
-import { DynamoDB } from 'aws-sdk';
 
 const app = express();
 app.use(cors());
@@ -42,42 +41,34 @@ app.use(cookieParser());
 
 const router = express.Router();
 
-const tableName = process.env.DYNAMODB_TABLENAME || 'quokka';
-const dynamodbOptions = () => {
-  let region = 'eu-west-2';
-  if (process.env.DYNAMODB_REGION) {
-    region = process.env.DYNAMODB_REGION;
-  }
-
-  return { region };
-};
-
 router.post('/api/login', loginHandler);
 router.post('/api/logout', verifyUserMiddleware, logoutHandler);
 router.post('/api/register', registerUserHandler);
+router.get('/api/user', verifyUserMiddleware, getUserHandler);
 
 router.post('/api/artist', verifyUserMiddleware, newArtistHandler);
-router.get('/api/artists', verifyUserMiddleware, findArtistsByGSIHandler);
+router.get('/api/artists', verifyUserMiddleware, findArtistsByOwnerHandler);
 
 router.post('/api/tour', verifyUserMiddleware, newTourHandler);
-router.get('/api/tours', verifyUserMiddleware, findUserToursHandler);
+router.get('/api/tours', verifyUserMiddleware, findOwnerToursHandler);
 router.get(
   '/api/:artistUuid/tours',
   verifyUserMiddleware,
-  findUserArtistToursHandler
+  findOwnerArtistToursHandler
 );
+
+router.get('/api/tours/all', verifyUserMiddleware, findUserTours);
 
 router.post(
   '/api/tour/:tourUuid/member',
   verifyUserMiddleware,
   newTourMemberHandler
 );
-router.get('/api/members', verifyUserMiddleware, findUserMembersHandler);
-
+router.get('/api/members', verifyUserMiddleware, findOwnerMembersHandler);
 router.get(
   '/api/tour/:tourUuid/members',
   verifyUserMiddleware,
-  findUserTourMembersHandler
+  findOwnerTourMembersHandler
 );
 
 app.use(router);

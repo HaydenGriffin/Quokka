@@ -4,7 +4,7 @@ import { DocumentClient } from 'aws-sdk/clients/dynamodb';
 interface TourMemberItem {
   pk: string;
   sk: string;
-  ownerUuid: string;
+  ownerEmailAddress: string;
   emailAddress: string;
   tourUuid: string;
 }
@@ -29,13 +29,13 @@ class TourMemberRepository implements Repository<TourMemberItem> {
     return (await this.dynamoDB.get(params).promise()).Item as TourMemberItem;
   }
 
-  async findUserTours(userUuid: string): Promise<TourMemberItem[]> {
+  async findUserTours(userEmailAddress: string): Promise<TourMemberItem[]> {
     const params = {
       TableName: this.tableName,
       KeyConditionExpression:
-        'pk = :userUuid and begins_with(sk = :recordType)',
+        'pk = :userEmailAddress and begins_with(sk, :recordType)',
       ExpressionAttributeValues: {
-        ':userUuid': userUuid,
+        ':userEmailAddress': userEmailAddress,
         ':recordType': RecordType.MEMBER,
       },
     };
@@ -49,7 +49,7 @@ class TourMemberRepository implements Repository<TourMemberItem> {
       Item: {
         pk: toInsert.pk,
         sk: toInsert.sk,
-        ownerUuid: toInsert.ownerUuid,
+        ownerEmailAddress: toInsert.ownerEmailAddress,
         recordTypeParentUuid: `${RecordType.MEMBER}_${toInsert.tourUuid}`,
         ...toInsert,
       },
@@ -58,14 +58,14 @@ class TourMemberRepository implements Repository<TourMemberItem> {
     return this.dynamoDB.put(params).promise();
   }
 
-  async findByOwner(ownerUuid: string): Promise<TourMemberItem[]> {
+  async findByOwner(ownerEmailAddress: string): Promise<TourMemberItem[]> {
     const params = {
       TableName: this.tableName,
-      IndexName: 'ownerUuid-recordTypeParentUuid_index',
+      IndexName: 'ownerEmailAddress-recordTypeParentUuid_index',
       KeyConditionExpression:
-        'ownerUuid = :ownerUuid and begins_with(recordTypeParentUuid, :recordTypeParentUuid)',
+        'ownerEmailAddress = :ownerEmailAddress and begins_with(recordTypeParentUuid, :recordTypeParentUuid)',
       ExpressionAttributeValues: {
-        ':ownerUuid': ownerUuid,
+        ':ownerEmailAddress': ownerEmailAddress,
         ':recordTypeParentUuid': RecordType.MEMBER,
       },
     };
@@ -74,16 +74,16 @@ class TourMemberRepository implements Repository<TourMemberItem> {
   }
 
   async findByOwnerTour(
-    ownerUuid: string,
+    ownerEmailAddress: string,
     tourUuid: string
   ): Promise<TourMemberItem[]> {
     const params = {
       TableName: this.tableName,
-      IndexName: 'ownerUuid-recordTypeParentUuid_index',
+      IndexName: 'ownerEmailAddress-recordTypeParentUuid_index',
       KeyConditionExpression:
-        'ownerUuid = :ownerUuid and recordTypeParentUuid = :recordTypeParentUuid',
+        'ownerEmailAddress = :ownerEmailAddress and recordTypeParentUuid = :recordTypeParentUuid',
       ExpressionAttributeValues: {
-        ':ownerUuid': ownerUuid,
+        ':ownerEmailAddress': ownerEmailAddress,
         ':recordTypeParentUuid': `${RecordType.MEMBER}_${tourUuid}`,
       },
     };

@@ -4,7 +4,7 @@ import { DocumentClient } from 'aws-sdk/clients/dynamodb';
 interface TourItem {
   pk: string;
   sk: string;
-  ownerUuid: string;
+  ownerEmailAddress: string;
   tourName: string;
   artistUuid: string;
 }
@@ -35,7 +35,7 @@ class TourRepository implements Repository<TourItem> {
       Item: {
         pk: toInsert.pk,
         sk: toInsert.sk,
-        ownerUuid: toInsert.ownerUuid,
+        ownerEmailAddress: toInsert.ownerEmailAddress,
         recordTypeParentUuid: `${RecordType.TOUR}_${toInsert.artistUuid}`,
         ...toInsert,
       },
@@ -44,14 +44,14 @@ class TourRepository implements Repository<TourItem> {
     return this.dynamoDB.put(params).promise();
   }
 
-  async findByOwner(ownerUuid: string): Promise<TourItem[]> {
+  async findByOwner(ownerEmailAddress: string): Promise<TourItem[]> {
     const params = {
       TableName: this.tableName,
-      IndexName: 'ownerUuid-recordTypeParentUuid_index',
+      IndexName: 'ownerEmailAddress-recordTypeParentUuid_index',
       KeyConditionExpression:
-        'ownerUuid = :ownerUuid and begins_with(recordTypeParentUuid, :recordType)',
+        'ownerEmailAddress = :ownerEmailAddress and begins_with(recordTypeParentUuid, :recordType)',
       ExpressionAttributeValues: {
-        ':ownerUuid': ownerUuid,
+        ':ownerEmailAddress': ownerEmailAddress,
         ':recordType': RecordType.TOUR,
       },
     };
@@ -59,16 +59,16 @@ class TourRepository implements Repository<TourItem> {
   }
 
   async findByOwnerArtist(
-    ownerUuid: string,
+    ownerEmailAddress: string,
     artistUuid: string
   ): Promise<TourItem[]> {
     const params = {
       TableName: this.tableName,
-      IndexName: 'ownerUuid-recordTypeParentUuid_index',
+      IndexName: 'ownerEmailAddress-recordTypeParentUuid_index',
       KeyConditionExpression:
-        'ownerUuid = :ownerUuid and recordTypeParentUuid = :recordTypeParentUuid',
+        'ownerEmailAddress = :ownerEmailAddress and recordTypeParentUuid = :recordTypeParentUuid',
       ExpressionAttributeValues: {
-        ':ownerUuid': ownerUuid,
+        ':ownerEmailAddress': ownerEmailAddress,
         ':recordTypeParentUuid': `${RecordType.TOUR}_${artistUuid}`,
       },
     };

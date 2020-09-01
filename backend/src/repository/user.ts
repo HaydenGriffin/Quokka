@@ -1,6 +1,5 @@
 import { DocumentClient } from 'aws-sdk/clients/dynamodb';
 import { Repository, RecordType } from './types';
-import { TourItem } from './tour';
 
 interface User {
   pk?: string;

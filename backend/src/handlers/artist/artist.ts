@@ -11,7 +11,7 @@ export const createNewArtistHandler = (
     const user = req['user'] as User;
     const { artistName } = req.body;
     let artistToInsert = <ArtistItem>{};
-    artistToInsert.ownerUuid = user.emailAddress;
+    artistToInsert.ownerEmailAddress = user.emailAddress;
     artistToInsert.artistName = artistName;
     artistToInsert.pk = uuidv4();
     artistToInsert.sk = dayjs().format();
@@ -22,7 +22,7 @@ export const createNewArtistHandler = (
   };
 };
 
-export const createFindUserArtistsHandler = (
+export const createFindOwnerArtistsHandler = (
   artistRepo: ArtistRepository
 ): Handler => {
   return async (req: Request, res: Response) => {

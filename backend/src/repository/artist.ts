@@ -4,7 +4,7 @@ import { DocumentClient } from 'aws-sdk/clients/dynamodb';
 interface ArtistItem {
   pk: string;
   sk: string;
-  ownerUuid: string;
+  ownerEmailAddress: string;
   artistName: string;
 }
 
@@ -34,7 +34,7 @@ class ArtistRepository implements Repository<ArtistItem> {
       Item: {
         pk: toInsert.pk,
         sk: toInsert.sk,
-        ownerUuid: toInsert.ownerUuid,
+        ownerEmailAddress: toInsert.ownerEmailAddress,
         recordTypeParentUuid: RecordType.ARTIST,
         ...toInsert,
       },
@@ -43,14 +43,14 @@ class ArtistRepository implements Repository<ArtistItem> {
     return this.dynamoDB.put(params).promise();
   }
 
-  async findByOwner(ownerUuid: string): Promise<ArtistItem[]> {
+  async findByOwner(ownerEmailAddress: string): Promise<ArtistItem[]> {
     const params = {
       TableName: this.tableName,
-      IndexName: 'ownerUuid-recordTypeParentUuid_index',
+      IndexName: 'ownerEmailAddress-recordTypeParentUuid_index',
       KeyConditionExpression:
-        'ownerUuid = :ownerUuid and recordTypeParentUuid = :recordType',
+        'ownerEmailAddress = :ownerEmailAddress and recordTypeParentUuid = :recordType',
       ExpressionAttributeValues: {
-        ':ownerUuid': ownerUuid,
+        ':ownerEmailAddress': ownerEmailAddress,
         ':recordType': RecordType.ARTIST,
       },
     };

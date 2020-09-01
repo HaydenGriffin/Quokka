@@ -1,4 +1,4 @@
-import React, { createContext } from 'react';
+import React from 'react';
 import { BrowserRouter as Router, Switch, Route } from 'react-router-dom';
 import SideBar from './components/SideBar';
 // pages
@@ -8,10 +8,6 @@ import Setlist from './setlist';
 import './styles/main.css';
 import TopBar from './components/TopBar';
 import ActivityPanel from './components/ActivityPanel';
-
-const ArtistContext = React.createContext('');
-
-<ArtistContext.Provider value='test'></ArtistContext.Provider>
 
 export default function App() {
   return (

@@ -21,13 +21,13 @@ const tableName = process.env.DYNAMODB_TABLENAME || 'quokka';
 const tourRepo = new TourMemberRepository(tableName, dynamoDB);
 
 const newTourMemberHandler = createNewTourMemberHandler(tourRepo);
-const findUserMembersHandler = createFindOwnerMembersHandler(tourRepo);
-const findUserTourMembersHandler = createFindOwnerTourMembersHandler(tourRepo);
+const findOwnerMembersHandler = createFindOwnerMembersHandler(tourRepo);
+const findOwnerTourMembersHandler = createFindOwnerTourMembersHandler(tourRepo);
 const findUserTours = createFindUserTours(tourRepo);
 
 export {
   newTourMemberHandler,
-  findUserMembersHandler,
-  findUserTourMembersHandler,
+  findOwnerMembersHandler,
+  findOwnerTourMembersHandler,
   findUserTours,
 };

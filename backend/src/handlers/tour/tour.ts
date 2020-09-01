@@ -10,7 +10,7 @@ export const createNewTourHandler = (tourRepo: TourRepository): Handler => {
     const user = req['user'] as User;
 
     let tourToInsert = <TourItem>{};
-    tourToInsert.ownerUuid = user.emailAddress;
+    tourToInsert.ownerEmailAddress = user.emailAddress;
     tourToInsert.artistUuid = artistUuid;
     tourToInsert.tourName = tourName;
     tourToInsert.pk = uuidv4();
@@ -22,7 +22,7 @@ export const createNewTourHandler = (tourRepo: TourRepository): Handler => {
   };
 };
 
-export const createFindUserToursHandler = (
+export const createFindOwnerToursHandler = (
   tourRepo: TourRepository
 ): Handler => {
   return async (req: Request, res: Response) => {
@@ -34,7 +34,7 @@ export const createFindUserToursHandler = (
   };
 };
 
-export const createFindUserArtistToursHandler = (
+export const createFindOwnerArtistToursHandler = (
   tourRepo: TourRepository
 ): Handler => {
   return async (req: Request, res: Response) => {
