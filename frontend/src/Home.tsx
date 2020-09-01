@@ -1,14 +1,10 @@
-import React, { Component, useState, useEffect } from 'react';
+import React, { useState, useEffect } from 'react';
 import Button from './components/Button';
 import Title from './components/PageTitleHeader';
 import Tile from './components/ProjectTile';
-import { Api } from './api/api';
+import * as api from './api/api';
 import { ReactComponent as ArtistIcon } from './assets/icons/mic-thicc.svg';
 import ProjectDialog from './components/ProjectDialog';
-
-const api = new Api(
-  'https://8a03fs0g30.execute-api.eu-west-2.amazonaws.com/dev'
-);
 
 export default function Home() {
   const [showProjectDialog, setShowDialog] = useState(false);
@@ -17,7 +13,7 @@ export default function Home() {
 
   useEffect(() => {
     const fetchDataAsync = async () => {
-      const result = await api.getArtists('Matt');
+      const result = await api.artist.find();
       setArtists(result.data);
     };
     fetchDataAsync();
@@ -34,7 +30,7 @@ export default function Home() {
         <div className="grid grid-cols-6 pt-32 col-gap-2 row-gap-12">
           {artists.map((artist: any) => (
             <Tile
-              key={artist.PK}
+              key={artist.pk}
               notification={true}
               artist={artist.artistName}
               set="Live Set"
