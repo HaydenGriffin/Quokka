@@ -5,7 +5,7 @@ const SignupButton: FC = () => {
   const { loginWithRedirect } = useAuth0();
   return (
     <button
-      className="btn-primary"
+      className="bg-accentfade px-5 py-3 text-white font-medium my-3"
       onClick={() => loginWithRedirect({ screen_hint: 'signup' })}
     >
       Sign Up
