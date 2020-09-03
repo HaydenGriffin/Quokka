@@ -1,11 +1,12 @@
 import React from 'react';
 import SignupButton from './components/SignupButton';
+import EdLanding from './assets/images/Ed-Landing.jpg';
 
 export default function Landing() {
   return (
     <>
-      <div className="w-screen h-screen absolute bg-darkgrey z-20">
-        <div className="pl-16 pt-48">
+      <div className="w-screen h-screen absolute bg-darkgrey z-20 flex">
+        <div className="pl-16 pt-48 w-2/3">
           <h1 className="text-white font-medium m-0 p-0 text-3xl">Quokka</h1>
           <h1 className="text-white font-black text-6xl uppercase m-0">
             Tour Workflow
@@ -21,7 +22,7 @@ export default function Landing() {
             </a>
           </p>
         </div>
-        <img src="Ed-Landing.jpg" alt="" />
+        <img src={EdLanding} alt="" className="w-2/3 h-auto" />
       </div>
     </>
   );
