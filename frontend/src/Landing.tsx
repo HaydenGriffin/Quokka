@@ -21,7 +21,7 @@ export default function Landing() {
             </a>
           </p>
         </div>
-        <div></div>
+        <img src="Ed-Landing.jpg" alt="" />
       </div>
     </>
   );
