@@ -11,5 +11,7 @@
   "devDependencies": {
     "concurrently": "^5.2.0"
   },
-  "dependencies": {}
+  "dependencies": {
+    "@auth0/auth0-react": "^1.0.0"
+  }
 }

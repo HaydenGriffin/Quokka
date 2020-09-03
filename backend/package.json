@@ -8,6 +8,7 @@
     "start:local": "cross-env HOSTNAME=localhost:3000 ENV=local DYNAMODB_TABLENAME=quokka tsnd --respawn src/handlers/app.ts"
   },
   "dependencies": {
+    "@auth0/auth0-react": "^1.0.0",
     "bcryptjs": "^2.4.3",
     "body-parser": "^1.19.0",
     "cookie-parser": "^1.4.5",
