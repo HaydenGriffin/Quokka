@@ -8,8 +8,15 @@ import Setlist from './setlist';
 import './styles/main.css';
 import TopBar from './components/TopBar';
 import ActivityPanel from './components/ActivityPanel';
+import { useAuth0 } from '@auth0/auth0-react';
+import Loading from './components/Loading';
 
 export default function App() {
+  const { isLoading } = useAuth0();
+
+  if (isLoading) {
+    return <Loading />;
+  }
   return (
     <Router>
       <ActivityPanel />

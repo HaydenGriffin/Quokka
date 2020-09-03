@@ -4,20 +4,30 @@ import Avatar from './AvatarIcon';
 import { ReactComponent as LogoutICon } from '../assets/icons/log-out.svg';
 import { ReactComponent as BellIcon } from '../assets/icons/bell.svg';
 import Breadcrumbs from './Breadcrumbs';
+import PrimaryButton from './Button';
+import LoginButton from './LoginButton';
+import SignupButton from './SignupButton';
+import { useAuth0 } from '@auth0/auth0-react';
+import LogoutButton from './LogoutButton';
+
 const TopBar: FC = () => {
+  const { user, isAuthenticated } = useAuth0();
+  const { name, picture } = user;
+
   return (
     <header className="pr-12 pt-2 h-24 bg-white">
       <div className="flex float-right items-center w-2/4">
         <Breadcrumbs title="name">
           <li>
-            <a href="/">Matt's Artists</a>
+            <a href="/">{name}'s Artists</a>
           </li>
           <li>Ed Sheeran</li>
         </Breadcrumbs>
         <Searchbar />
-        <Avatar />
+        <Avatar picture={picture} />
         <BellIcon className="w-16 h-16 mr-2" />
-        <LogoutICon className="w-16 h-16" />
+        {isAuthenticated ? <LogoutButton /> : <LoginButton />}
+        <SignupButton />
       </div>
     </header>
   );

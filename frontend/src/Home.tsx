@@ -11,13 +11,13 @@ export default function Home() {
   const [artists, setArtists] = useState([]);
   const openProjectDialog = () => setShowDialog(true);
 
-  useEffect(() => {
-    const fetchDataAsync = async () => {
-      const result = await api.artist.find();
-      setArtists(result.data);
-    };
-    fetchDataAsync();
-  }, []);
+  // useEffect(() => {
+  //   const fetchDataAsync = async () => {
+  //     const result = await api.artist.find();
+  //     setArtists(result.data);
+  //   };
+  //   fetchDataAsync();
+  // }, []);
 
   return (
     <>
