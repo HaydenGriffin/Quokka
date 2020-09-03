@@ -3,6 +3,7 @@ import { BrowserRouter as Router, Switch, Route } from 'react-router-dom';
 import SideBar from './components/SideBar';
 // pages
 import Home from './Home';
+import Landing from './Landing';
 import Tracks from './Tracks';
 import Setlist from './setlist';
 import './styles/main.css';
@@ -19,6 +20,7 @@ export default function App() {
   }
   return (
     <Router>
+      <Landing />
       <ActivityPanel />
       <SideBar />
       <TopBar />
