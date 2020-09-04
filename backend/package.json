@@ -5,17 +5,18 @@
   "main": "handler.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
-    "start:local": "cross-env HOSTNAME=localhost:3000 ENV=local DYNAMODB_TABLENAME=quokka tsnd --respawn src/handlers/app.ts"
+    "start:local": "cross-env HOSTNAME=localhost:3000 ENV=local DYNAMODB_TABLENAME=quokka REACT_APP_AUDIENCE=https://casbp529v8.execute-api.eu-west-2.amazonaws.com/dev JWKS_URI=https://dev-2tbe1zne.eu.auth0.com/.well-known/jwks.json ISSUER=https://dev-2tbe1zne.eu.auth0.com/ tsnd --respawn src/handlers/app.ts"
   },
   "dependencies": {
-    "@auth0/auth0-react": "^1.0.0",
     "bcryptjs": "^2.4.3",
     "body-parser": "^1.19.0",
     "cookie-parser": "^1.4.5",
     "cors": "^2.8.5",
     "dayjs": "^1.8.34",
     "express": "^4.17.1",
+    "express-jwt": "^6.0.0",
     "jsonwebtoken": "^8.5.1",
+    "jwks-rsa": "^1.9.0",
     "serverless-http": "^2.5.0",
     "source-map-support": "^0.5.10",
     "uuid": "^8.3.0"

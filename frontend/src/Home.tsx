@@ -5,19 +5,22 @@ import Tile from './components/ProjectTile';
 import * as api from './api/api';
 import { ReactComponent as ArtistIcon } from './assets/icons/mic-thicc.svg';
 import ProjectDialog from './components/ProjectDialog';
+import { useAuth0 } from '@auth0/auth0-react';
 
 export default function Home() {
   const [showProjectDialog, setShowDialog] = useState(false);
   const [artists, setArtists] = useState([]);
   const openProjectDialog = () => setShowDialog(true);
+  const { getAccessTokenSilently } = useAuth0();
 
-  // useEffect(() => {
-  //   const fetchDataAsync = async () => {
-  //     const result = await api.artist.find();
-  //     setArtists(result.data);
-  //   };
-  //   fetchDataAsync();
-  // }, []);
+  useEffect(() => {
+    const fetchDataAsync = async () => {
+      const accessToken = await getAccessTokenSilently();
+      const result = await api.artist.find(accessToken);
+      setArtists(result.data);
+    };
+    fetchDataAsync();
+  }, []);
 
   return (
     <>

@@ -24,6 +24,9 @@ provider:
     AWS_NODEJS_CONNECTION_REUSE_ENABLED: 1
     DYNAMODB_TABLENAME: 'quokka'
     DYNAMODB_REGION: 'eu-west-2'
+    REACT_APP_AUDIENCE: 'https://casbp529v8.execute-api.eu-west-2.amazonaws.com/dev'
+    JWKS_URI: 'https://dev-2tbe1zne.eu.auth0.com/.well-known/jwks.json'
+    ISSUER: 'https://dev-2tbe1zne.eu.auth0.com/'
   iamRoleStatements:
     - Effect: Allow
       Action:
