@@ -13,14 +13,14 @@ export default function Home() {
   const openProjectDialog = () => setShowDialog(true);
   const { getAccessTokenSilently } = useAuth0();
 
-  useEffect(() => {
-    const fetchDataAsync = async () => {
-      const accessToken = await getAccessTokenSilently();
-      const result = await api.artist.find(accessToken);
-      setArtists(result.data);
-    };
-    fetchDataAsync();
-  }, []);
+  // useEffect(() => {
+  //   const fetchDataAsync = async () => {
+  //     const accessToken = await getAccessTokenSilently();
+  //     const result = await api.artist.find(accessToken);
+  //     setArtists(result.data);
+  //   };
+  //   fetchDataAsync();
+  // }, []);
 
   return (
     <>
