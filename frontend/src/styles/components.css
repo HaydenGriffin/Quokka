@@ -114,3 +114,11 @@
 .setlist-songname {
   text-align: right;
 }
+
+.signup-btn {
+  @apply bg-accentfade px-5 py-3 text-white font-medium my-3;
+}
+
+.signup-btn:hover {
+  @apply bg-white text-accentfade;
+}
