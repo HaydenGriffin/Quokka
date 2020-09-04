@@ -20,7 +20,7 @@ export default function App() {
   }
   return (
     <Router>
-      <Landing />
+      {/* <Landing /> */}
       <ActivityPanel />
       <SideBar />
       <TopBar />
