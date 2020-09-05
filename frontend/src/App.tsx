@@ -11,7 +11,6 @@ import TopBar from './components/TopBar';
 import ActivityPanel from './components/ActivityPanel';
 import { useAuth0 } from '@auth0/auth0-react';
 import Loading from './components/Loading';
-import Dashboard from './dashboard';
 
 export default function App() {
   const { isLoading } = useAuth0();
