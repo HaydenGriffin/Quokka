@@ -1,8 +1,7 @@
 import React, { FC } from 'react';
 import { ReactComponent as ThreeDots } from '../assets/icons/more-horizontal.svg';
-import { ReactComponent as UsersIcon } from '../assets/icons/users.svg';
 
-type ProjectTileProps = {
+type DashboardTileProps = {
   notification: boolean;
   artist: string;
   tour: string;
@@ -12,7 +11,7 @@ type ProjectTileProps = {
   tourAdmin: string;
 };
 
-const ProjectTile: FC<ProjectTileProps> = ({
+const DashboardTile: FC<DashboardTileProps> = ({
   notification,
   artist,
   tour,
@@ -20,7 +19,7 @@ const ProjectTile: FC<ProjectTileProps> = ({
   sets,
   tracks,
   tourAdmin,
-}: ProjectTileProps) => {
+}: DashboardTileProps) => {
   return (
     <div className="relative mb-5 cursor-pointer">
       {notification && <div className="notify"></div>}
@@ -57,4 +56,4 @@ const ProjectTile: FC<ProjectTileProps> = ({
     </div>
   );
 };
-export default ProjectTile;
+export default DashboardTile;
