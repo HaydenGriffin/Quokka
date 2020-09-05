@@ -114,3 +114,11 @@
 .setlist-songname {
   text-align: right;
 }
+
+.dashboard-tile {
+  @apply flex items-center bg-white px-5 w-full py-2 rounded-md transition duration-150 ease-in-out;
+}
+
+.dashboard-tile:hover {
+  @apply bg-accentfade shadow-lg;
+}
