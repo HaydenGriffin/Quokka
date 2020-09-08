@@ -8,6 +8,7 @@ import Setlist from './setlist';
 import './styles/main.css';
 import TopBar from './components/TopBar';
 import ActivityPanel from './components/ActivityPanel';
+import TourDash from './TourDash';
 
 export default function App() {
   return (
@@ -25,6 +26,7 @@ export default function App() {
         <Route path="/setlist">
           <Setlist />
         </Route>
+        <Route path="/tourdashboard" component={TourDash} />
       </Switch>
     </Router>
   );
