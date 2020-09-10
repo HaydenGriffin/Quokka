@@ -19,7 +19,7 @@ export const createNewTourMemberHandler = (
     tourMemberToInsert.pk = userEmailAddress;
     tourMemberToInsert.sk = `${RecordType.MEMBER}_${dayjs().format()}`;
     tourMemberToInsert.tourUuid = tourUuid;
-    tourMemberToInsert.ownerEmailAddress = user.emailAddress;
+    tourMemberToInsert.ownerId = user.emailAddress;
 
     let result = await tourMemberRepo.insert(tourMemberToInsert);
 

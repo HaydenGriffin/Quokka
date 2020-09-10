@@ -5,7 +5,7 @@
   "main": "handler.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
-    "start:local": "cross-env HOSTNAME=localhost:3000 ENV=local DYNAMODB_TABLENAME=quokka REACT_APP_AUDIENCE=https://casbp529v8.execute-api.eu-west-2.amazonaws.com/dev JWKS_URI=https://dev-2tbe1zne.eu.auth0.com/.well-known/jwks.json ISSUER=https://dev-2tbe1zne.eu.auth0.com/ tsnd --respawn src/handlers/app.ts"
+    "start:local": "cross-env HOSTNAME=localhost:3000 ENV=local DYNAMODB_TABLENAME=quokka AUDIENCE=https://casbp529v8.execute-api.eu-west-2.amazonaws.com/dev JWKS_URI=https://dev-2tbe1zne.eu.auth0.com/.well-known/jwks.json ISSUER=https://dev-2tbe1zne.eu.auth0.com/ tsnd --respawn src/handlers/app.ts"
   },
   "dependencies": {
     "bcryptjs": "^2.4.3",

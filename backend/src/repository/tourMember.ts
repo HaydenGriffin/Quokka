@@ -4,7 +4,7 @@ import { DocumentClient } from 'aws-sdk/clients/dynamodb';
 interface TourMemberItem {
   pk: string;
   sk: string;
-  ownerEmailAddress: string;
+  ownerId: string;
   emailAddress: string;
   tourUuid: string;
 }
@@ -49,7 +49,7 @@ class TourMemberRepository implements Repository<TourMemberItem> {
       Item: {
         pk: toInsert.pk,
         sk: toInsert.sk,
-        ownerEmailAddress: toInsert.ownerEmailAddress,
+        ownerId: toInsert.ownerId,
         recordTypeParentUuid: `${RecordType.MEMBER}_${toInsert.tourUuid}`,
         ...toInsert,
       },
@@ -58,14 +58,14 @@ class TourMemberRepository implements Repository<TourMemberItem> {
     return this.dynamoDB.put(params).promise();
   }
 
-  async findByOwner(ownerEmailAddress: string): Promise<TourMemberItem[]> {
+  async findByOwner(ownerId: string): Promise<TourMemberItem[]> {
     const params = {
       TableName: this.tableName,
-      IndexName: 'ownerEmailAddress-recordTypeParentUuid_index',
+      IndexName: 'ownerId-recordTypeParentUuid_index',
       KeyConditionExpression:
-        'ownerEmailAddress = :ownerEmailAddress and begins_with(recordTypeParentUuid, :recordTypeParentUuid)',
+        'ownerId = :ownerId and begins_with(recordTypeParentUuid, :recordTypeParentUuid)',
       ExpressionAttributeValues: {
-        ':ownerEmailAddress': ownerEmailAddress,
+        ':ownerId': ownerId,
         ':recordTypeParentUuid': RecordType.MEMBER,
       },
     };
@@ -74,16 +74,16 @@ class TourMemberRepository implements Repository<TourMemberItem> {
   }
 
   async findByOwnerTour(
-    ownerEmailAddress: string,
+    ownerId: string,
     tourUuid: string
   ): Promise<TourMemberItem[]> {
     const params = {
       TableName: this.tableName,
-      IndexName: 'ownerEmailAddress-recordTypeParentUuid_index',
+      IndexName: 'ownerId-recordTypeParentUuid_index',
       KeyConditionExpression:
-        'ownerEmailAddress = :ownerEmailAddress and recordTypeParentUuid = :recordTypeParentUuid',
+        'ownerId = :ownerId and recordTypeParentUuid = :recordTypeParentUuid',
       ExpressionAttributeValues: {
-        ':ownerEmailAddress': ownerEmailAddress,
+        ':ownerId': ownerId,
         ':recordTypeParentUuid': `${RecordType.MEMBER}_${tourUuid}`,
       },
     };

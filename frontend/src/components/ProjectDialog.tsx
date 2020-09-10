@@ -22,7 +22,6 @@ const ProjectDialog: FC<ProjectDialogProps> = ({
   const [inputValue, setInputValue] = useState<string>('');
   // function for new artist POST
   const NewArtist = async () => {
-    console.log('hi');
     if (inputValue !== '') {
       const accessToken = await getAccessTokenSilently();
       api.artist.create(inputValue, accessToken);

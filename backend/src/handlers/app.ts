@@ -41,19 +41,19 @@ router.post('/api/user', upsertUserHandler);
 router.post('/api/artist', checkJwt, newArtistHandler);
 router.get('/api/artists', checkJwt, findArtistsByOwnerHandler);
 
-router.post('/api/tour', checkJwt, newTourHandler);
-router.get('/api/tours', checkJwt, findOwnerToursHandler);
-router.get('/api/:artistUuid/tours', checkJwt, findOwnerArtistToursHandler);
+// router.post('/api/tour', checkJwt, newTourHandler);
+// router.get('/api/tours', checkJwt, findOwnerToursHandler);
+// router.get('/api/:artistUuid/tours', checkJwt, findOwnerArtistToursHandler);
 
-router.get('/api/tours/all', checkJwt, findUserTours);
+// router.get('/api/tours/all', checkJwt, findUserTours);
 
-router.post('/api/tour/:tourUuid/member', checkJwt, newTourMemberHandler);
-router.get('/api/members', checkJwt, findOwnerMembersHandler);
-router.get(
-  '/api/tour/:tourUuid/members',
-  checkJwt,
-  findOwnerTourMembersHandler
-);
+// router.post('/api/tour/:tourUuid/member', checkJwt, newTourMemberHandler);
+// router.get('/api/members', checkJwt, findOwnerMembersHandler);
+// router.get(
+//   '/api/tour/:tourUuid/members',
+//   checkJwt,
+//   findOwnerTourMembersHandler
+// );
 
 app.use(router);
 

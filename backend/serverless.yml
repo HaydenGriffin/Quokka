@@ -24,7 +24,7 @@ provider:
     AWS_NODEJS_CONNECTION_REUSE_ENABLED: 1
     DYNAMODB_TABLENAME: 'quokka'
     DYNAMODB_REGION: 'eu-west-2'
-    REACT_APP_AUDIENCE: 'https://casbp529v8.execute-api.eu-west-2.amazonaws.com/dev'
+    AUDIENCE: 'https://casbp529v8.execute-api.eu-west-2.amazonaws.com/dev'
     JWKS_URI: 'https://dev-2tbe1zne.eu.auth0.com/.well-known/jwks.json'
     ISSUER: 'https://dev-2tbe1zne.eu.auth0.com/'
   iamRoleStatements:
@@ -77,7 +77,7 @@ resources:
             AttributeType: S
           - AttributeName: sk
             AttributeType: S
-          - AttributeName: ownerEmailAddress
+          - AttributeName: ownerId
             AttributeType: S
           - AttributeName: recordTypeParentUuid
             AttributeType: S
@@ -90,9 +90,9 @@ resources:
           ReadCapacityUnits: 1
           WriteCapacityUnits: 1
         GlobalSecondaryIndexes:
-          - IndexName: ownerEmailAddress-recordTypeParentUuid_index
+          - IndexName: ownerId-recordTypeParentUuid_index
             KeySchema:
-              - AttributeName: ownerEmailAddress
+              - AttributeName: ownerId
                 KeyType: HASH
               - AttributeName: recordTypeParentUuid
                 KeyType: RANGE
