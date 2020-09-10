@@ -115,10 +115,10 @@
   text-align: right;
 }
 
-.signup-btn {
-  @apply bg-accentfade px-5 py-3 text-white font-medium my-3;
+.dashboard-tile {
+  @apply flex items-center bg-white px-5 w-full py-2 rounded-md transition duration-150 ease-in-out;
 }
 
-.signup-btn:hover {
-  @apply bg-white text-accentfade;
+.dashboard-tile:hover {
+  @apply bg-accentfade shadow-lg;
 }
