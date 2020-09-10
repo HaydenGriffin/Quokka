@@ -4,7 +4,7 @@ import { DocumentClient } from 'aws-sdk/clients/dynamodb';
 interface TourItem {
   pk: string;
   sk: string;
-  ownerEmailAddress: string;
+  ownerId: string;
   tourName: string;
   artistUuid: string;
 }
@@ -35,7 +35,7 @@ class TourRepository implements Repository<TourItem> {
       Item: {
         pk: toInsert.pk,
         sk: toInsert.sk,
-        ownerEmailAddress: toInsert.ownerEmailAddress,
+        ownerId: toInsert.ownerId,
         recordTypeParentUuid: `${RecordType.TOUR}_${toInsert.artistUuid}`,
         ...toInsert,
       },
@@ -44,14 +44,14 @@ class TourRepository implements Repository<TourItem> {
     return this.dynamoDB.put(params).promise();
   }
 
-  async findByOwner(ownerEmailAddress: string): Promise<TourItem[]> {
+  async findByOwner(ownerId: string): Promise<TourItem[]> {
     const params = {
       TableName: this.tableName,
-      IndexName: 'ownerEmailAddress-recordTypeParentUuid_index',
+      IndexName: 'ownerId-recordTypeParentUuid_index',
       KeyConditionExpression:
-        'ownerEmailAddress = :ownerEmailAddress and begins_with(recordTypeParentUuid, :recordType)',
+        'ownerId = :ownerId and begins_with(recordTypeParentUuid, :recordType)',
       ExpressionAttributeValues: {
-        ':ownerEmailAddress': ownerEmailAddress,
+        ':ownerId': ownerId,
         ':recordType': RecordType.TOUR,
       },
     };
@@ -59,16 +59,16 @@ class TourRepository implements Repository<TourItem> {
   }
 
   async findByOwnerArtist(
-    ownerEmailAddress: string,
+    ownerId: string,
     artistUuid: string
   ): Promise<TourItem[]> {
     const params = {
       TableName: this.tableName,
-      IndexName: 'ownerEmailAddress-recordTypeParentUuid_index',
+      IndexName: 'ownerId-recordTypeParentUuid_index',
       KeyConditionExpression:
-        'ownerEmailAddress = :ownerEmailAddress and recordTypeParentUuid = :recordTypeParentUuid',
+        'ownerId = :ownerId and recordTypeParentUuid = :recordTypeParentUuid',
       ExpressionAttributeValues: {
-        ':ownerEmailAddress': ownerEmailAddress,
+        ':ownerId': ownerId,
         ':recordTypeParentUuid': `${RecordType.TOUR}_${artistUuid}`,
       },
     };

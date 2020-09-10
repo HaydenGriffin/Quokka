@@ -1,9 +1,10 @@
-import React, { FC, useState } from 'react';
+import React, { FC, useState, useEffect } from 'react';
 import { ReactComponent as CloseIco } from '../assets/icons/x.svg';
 import { DialogOverlay, DialogContent } from '@reach/dialog';
 import Button from './Button';
 import ErrorAlert from './ErrorAlert';
 import * as api from '../api/api';
+import { useAuth0 } from '@auth0/auth0-react';
 
 type ProjectDialogProps = {
   isOpen: boolean;
@@ -15,13 +16,15 @@ const ProjectDialog: FC<ProjectDialogProps> = ({
   setShowDialog,
 }: ProjectDialogProps) => {
   const closeProjectDialog = () => setShowDialog(false);
+  const { getAccessTokenSilently } = useAuth0();
 
   // hook for getting input value
   const [inputValue, setInputValue] = useState<string>('');
   // function for new artist POST
-  const NewArtist = () => {
+  const NewArtist = async () => {
     if (inputValue !== '') {
-      api.artist.create(inputValue);
+      const accessToken = await getAccessTokenSilently();
+      api.artist.create(inputValue, accessToken);
       setShowDialog(false);
       alert(inputValue + ' Project Created!');
       setInputValue('');
