@@ -21,16 +21,12 @@ export default function App() {
   return (
     <Router>
       {/* <Landing /> */}
+      <Route exact path="/" component={Landing}></Route>
       <ActivityPanel />
       <SideBar />
       <TopBar />
       <Switch>
-        <Route exact path="/">
-          <Home />
-        </Route>
-        <Route path="/tracks">
-          <Tracks />
-        </Route>
+        <Route path="/tracks" component={Tracks}></Route>
         <Route path="/setlist">
           <Setlist />
         </Route>
