@@ -16,17 +16,26 @@ import Loading from './components/Loading';
 import Dashboard from './dashboard';
 
 export default function App() {
-  const { isLoading } = useAuth0();
+  const { isLoading, isAuthenticated } = useAuth0();
 
   if (isLoading) {
     return <Loading />;
   }
   return (
     <Router>
-      <SideBar />
-      <TopBar />
+      {isAuthenticated && (
+        <>
+          <SideBar />
+          <TopBar />
+        </>
+      )}
       <Switch>
-        <Route exact path="/" component={Dashboard}></Route>
+        {isAuthenticated ? (
+          <Route exact path="/" component={Dashboard}></Route>
+        ) : (
+          <Route exact path="/" component={Landing}></Route>
+        )}
+
         <Route path="/tracks">
           <Tracks />
         </Route>

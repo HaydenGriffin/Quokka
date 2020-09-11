@@ -1,5 +1,5 @@
 import React, { FC } from 'react';
-import Searchbar from './search';
+import Searchbar from './Search';
 import Avatar from './AvatarIcon';
 import { ReactComponent as LogoutICon } from '../assets/icons/log-out.svg';
 import { ReactComponent as BellIcon } from '../assets/icons/bell.svg';
