@@ -4,8 +4,7 @@ import { Repository, RecordType } from './types';
 interface User {
   pk?: string;
   sk?: string;
-  firstName: string;
-  password: string;
+  userId: string;
   emailAddress: string;
   registeredAt?: string;
   enabled: boolean;
@@ -53,7 +52,7 @@ class UserRepository implements Repository<User> {
     const params = {
       TableName: this.tableName,
       Item: {
-        pk: toInsert.emailAddress,
+        pk: toInsert.userId,
         sk: RecordType.ACCOUNT,
         ...toInsert,
       },

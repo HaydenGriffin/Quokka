@@ -10,7 +10,7 @@ export const createNewTourHandler = (tourRepo: TourRepository): Handler => {
     const user = req['user'] as User;
 
     let tourToInsert = <TourItem>{};
-    tourToInsert.ownerEmailAddress = user.emailAddress;
+    tourToInsert.ownerId = user.emailAddress;
     tourToInsert.artistUuid = artistUuid;
     tourToInsert.tourName = tourName;
     tourToInsert.pk = uuidv4();
