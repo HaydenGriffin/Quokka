@@ -115,10 +115,25 @@
   text-align: right;
 }
 
+.setlist-active {
+  @apply relative flex p-3 px-5 bg-white mb-3 border-gray-500 border-2 shadow-sm cursor-pointer;
+}
+
+.setlist-inactive {
+  @apply relative flex p-3 px-5  mb-3 text-gray-500 cursor-pointer;
+}
+
+.team-photo {
+  @apply w-16 h-16 border-2 border-white rounded-full m-2 cursor-pointer;
+
 .dashboard-tile {
   @apply flex items-center bg-white px-5 w-full py-2 rounded-md transition duration-150 ease-in-out;
 }
 
 .dashboard-tile:hover {
   @apply bg-accentfade shadow-lg;
+}
+
+.team-photo-admin {
+  @apply w-16 h-16 border-2 border-yellow-600 rounded-full m-2 cursor-pointer;
 }

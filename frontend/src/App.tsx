@@ -10,6 +10,7 @@ import './styles/main.css';
 import TopBar from './components/TopBar';
 
 import ActivityPanel from './components/ActivityPanel';
+import TourDash from './TourDashboard';
 import { useAuth0 } from '@auth0/auth0-react';
 import Loading from './components/Loading';
 import Dashboard from './dashboard';
@@ -22,7 +23,6 @@ export default function App() {
   }
   return (
     <Router>
-
       <SideBar />
       <TopBar />
       <Switch>
@@ -33,6 +33,7 @@ export default function App() {
         <Route path="/setlist">
           <Setlist />
         </Route>
+        <Route path="/tourdashboard" component={TourDash} />
       </Switch>
     </Router>
   );
