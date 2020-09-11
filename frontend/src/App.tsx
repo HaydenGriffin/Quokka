@@ -7,11 +7,12 @@ import Tracks from './Tracks';
 import Setlist from './setlist';
 import './styles/main.css';
 import TopBar from './components/TopBar';
-
+import Home from './Home';
+import Artist from './Artist';
 import TourDash from './TourDashboard';
+
 import { useAuth0 } from '@auth0/auth0-react';
 import Loading from './components/Loading';
-import Home from './Home';
 
 export default function App() {
   const { isLoading, isAuthenticated } = useAuth0();
@@ -33,13 +34,9 @@ export default function App() {
         ) : (
           <Route exact path="/" component={Landing}></Route>
         )}
-
-        <Route path="/tracks">
-          <Tracks />
-        </Route>
-        <Route path="/setlist">
-          <Setlist />
-        </Route>
+        <Route path="/tracks" component={Tracks} />
+        <Route path="/artist" component={Artist} />
+        <Route path="/setlist" component={Setlist} />
         <Route path="/tourdashboard" component={TourDash} />
       </Switch>
     </Router>
