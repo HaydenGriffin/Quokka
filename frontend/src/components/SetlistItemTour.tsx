@@ -1,24 +1,27 @@
 import React, { FC } from 'react';
 
-type SetlistitemTourProps = {
+type SetlistItemTourProps = {
   SetlistStyle: string;
-  Setlistname: string;
+  SetlistName: string;
   version: number;
   date: number;
 };
 
-const SetlistitemTour: FC<SetlistitemTourProps> = ({
+const SetlistItemTour: FC<SetlistItemTourProps> = ({
   SetlistStyle,
-  Setlistname,
+  SetlistName,
   version,
   date,
-}: SetlistitemTourProps) => {
+}: SetlistItemTourProps) => {
+  const GetSetlist = () => {
+    console.log('getting info for ' + SetlistName);
+  };
   return (
-    <div className={SetlistStyle}>
-      <h1 className="mr-12">{Setlistname}</h1>
+    <div className={SetlistStyle} onClick={GetSetlist}>
+      <h1 className="mr-12">{SetlistName}</h1>
       <h1 className="mr-12">{version}</h1>
       <h1>{date}</h1>
     </div>
   );
 };
-export default SetlistitemTour;
+export default SetlistItemTour;
