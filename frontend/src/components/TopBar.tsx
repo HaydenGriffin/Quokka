@@ -1,12 +1,9 @@
 import React, { FC } from 'react';
-import Searchbar from './Search';
+import Searchbar from './search';
 import Avatar from './AvatarIcon';
-import { ReactComponent as LogoutICon } from '../assets/icons/log-out.svg';
 import { ReactComponent as BellIcon } from '../assets/icons/bell.svg';
 import Breadcrumbs from './Breadcrumbs';
-import PrimaryButton from './Button';
 import LoginButton from './LoginButton';
-import SignupButton from './SignupButton';
 import { useAuth0 } from '@auth0/auth0-react';
 import LogoutButton from './LogoutButton';
 
@@ -27,7 +24,6 @@ const TopBar: FC = () => {
         <Avatar picture={picture} />
         <BellIcon className="w-16 h-16 mr-2" />
         {isAuthenticated ? <LogoutButton /> : <LoginButton />}
-        <SignupButton />
       </div>
     </header>
   );
