@@ -4,14 +4,14 @@ import Title from './components/PageTitleHeader';
 import TrackTile from './components/TracksTile';
 import { ReactComponent as TracksIcon } from './assets/icons/record-thicc.svg';
 import TourHeader from './components/TourHeader';
-import SetlistitemTour from './components/SetlistItemTour';
+import SetlistItemTour from './components/SetlistItemTour';
 
 export default function TourDash() {
   return (
     <div>
       <TourHeader title="Divide" setlist="Ed Sheeran" />
       <div className="pl-32 flex">
-        <div className="w-4/5">
+        <div className="w-2/3">
           <Title title="Tracks">
             <TracksIcon className="w-12 h-12 mr-12" />
             <Button>New Track</Button>
@@ -39,24 +39,24 @@ export default function TourDash() {
             />
           </div>
         </div>
-        <div className="w-px h-screen bg-gray-700"></div>
-        <div>
-          <h1>Setlists</h1>
-          <SetlistitemTour
+        <div className="w-px h-screen bg-accent mx-5 mt-5"></div>
+        <div className="text-center">
+          <h1 className="text-6xl font-bold mr-3">Setlists</h1>
+          <SetlistItemTour
             SetlistStyle="setlist-inactive"
-            Setlistname="Arena tour"
+            SetlistName="Arena tour"
             version={3}
             date={24052019}
           />
-          <SetlistitemTour
+          <SetlistItemTour
             SetlistStyle="setlist-active"
-            Setlistname="Stadium tour"
+            SetlistName="Stadium tour"
             version={3}
             date={24052019}
           />
-          <SetlistitemTour
+          <SetlistItemTour
             SetlistStyle="setlist-inactive"
-            Setlistname="Europe tour"
+            SetlistName="Europe tour"
             version={3}
             date={24052017}
           />
