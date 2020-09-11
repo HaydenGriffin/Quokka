@@ -1,48 +1,39 @@
-import React, { useState, useEffect } from 'react';
-import Button from './components/Button';
-import Title from './components/PageTitleHeader';
-import Tile from './components/ProjectTile';
-import * as api from './api/api';
-import { ReactComponent as ArtistIcon } from './assets/icons/mic-thicc.svg';
-import ProjectDialog from './components/ProjectDialog';
-import { useAuth0 } from '@auth0/auth0-react';
+import React from 'react';
+import DashboardTile from './components/DashboardTile';
+import ActivityPanel from './components/ActivityPanel';
 
 export default function Home() {
-  const [showProjectDialog, setShowDialog] = useState(false);
-  const [artists, setArtists] = useState([]);
-  const openProjectDialog = () => setShowDialog(true);
-  const { getAccessTokenSilently } = useAuth0();
-
-  // useEffect(() => {
-  //   const fetchDataAsync = async () => {
-  //     const accessToken = await getAccessTokenSilently();
-  //     const result = await api.artist.find(accessToken);
-  //     setArtists(result.data);
-  //   };
-  //   fetchDataAsync();
-  // }, []);
-
   return (
     <>
-      <ProjectDialog isOpen={showProjectDialog} setShowDialog={setShowDialog} />
-      <div className="pl-32">
-        <Title title="Artists">
-          <ArtistIcon className="w-12 h-12 mr-12" />
-          <Button onClick={openProjectDialog}>Create Artist</Button>
-        </Title>
-        <div className="grid grid-cols-6 pt-32 col-gap-2 row-gap-12">
-          {artists.map((artist: any) => (
-            <Tile
-              key={artist.pk}
-              notification={true}
-              artist={artist.artistName}
-              set="Live Set"
-              sets={66}
-              tracks={24}
-              users={3}
-            />
-          ))}
+      <div className="flex">
+        <div className="pl-32 mt-10 w-full">
+          <h1 className="text-5xl font-bold mb-5">Hi Matt!</h1>
+          <p className="text-xl font-regular mb-5">
+            Your recent tours{'  '}
+            <a href="#" className="underline text-gray-600">
+              view all
+            </a>
+          </p>
+          <DashboardTile
+            notification={false}
+            artist={'Ed Sheeran'}
+            tour={'Divide'}
+            setlist={'European Arenas'}
+            sets={3}
+            tracks={12}
+            tourAdmin={'Matt Cromwell'}
+          />
+          <DashboardTile
+            notification={false}
+            artist={'Ed Sheeran'}
+            tour={'Divide'}
+            setlist={'European Arenas'}
+            sets={3}
+            tracks={12}
+            tourAdmin={'Matt Cromwell'}
+          />
         </div>
+        <ActivityPanel />
       </div>
     </>
   );
