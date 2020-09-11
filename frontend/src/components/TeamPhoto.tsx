@@ -3,9 +3,14 @@ import React, { FC, useState } from 'react';
 type TeamPhotoProps = {
   member?: string;
   photo?: string;
+  Photostyle: string;
 };
 
-const TeamPhoto: FC<TeamPhotoProps> = ({ member, photo }: TeamPhotoProps) => {
+const TeamPhoto: FC<TeamPhotoProps> = ({
+  member,
+  photo,
+  Photostyle,
+}: TeamPhotoProps) => {
   var [ShowName, setShowName] = useState<boolean>(false);
   var [ShowBox, setShowBox] = useState<string>('hidden');
   const name = () => {
@@ -20,9 +25,7 @@ const TeamPhoto: FC<TeamPhotoProps> = ({ member, photo }: TeamPhotoProps) => {
   return (
     <>
       <div className="realtive items-center">
-        <div className="team-photo" onClick={() => name()}>
-          <p>{photo}</p>
-        </div>
+        <img className={Photostyle} src={photo} onClick={() => name()} />
         <div className={'bg-white p-2 absolute ' + ShowBox}>
           <h1>{member}</h1>
         </div>
