@@ -9,9 +9,11 @@ const IconClassName = 'icon';
 const Sidebar: FC = () => {
   return (
     <div className="w-16 pt-24 fixed h-screen bg-accent z-10">
-      <HomeIcon className={IconClassName} />
-      <TourIcon className={IconClassName} />
       <a href="/">
+        <HomeIcon className={IconClassName} />
+      </a>
+      <TourIcon className={IconClassName} />
+      <a href="/artist">
         <ArtistIcon className="icon-active" />
       </a>
       <a href="/tracks">
