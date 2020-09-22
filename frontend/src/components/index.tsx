@@ -25,6 +25,7 @@ import TeamPhoto from './TeamPhoto';
 import TopBar from './TopBar';
 import TourHeader from './TourHeader';
 import TrackTile from './TrackTile';
+import PrivateRoute from './PrivateRoute';
 
 export {
   ActivityItem,
@@ -54,4 +55,5 @@ export {
   TopBar,
   TourHeader,
   TrackTile,
+  PrivateRoute,
 };

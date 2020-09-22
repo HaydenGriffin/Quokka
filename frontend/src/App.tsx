@@ -9,7 +9,7 @@ import Home from './Home';
 import Artist from './Artist';
 import TourDash from './TourDashboard';
 // components
-import { SideBar, Loading, TopBar } from './components/index';
+import { SideBar, Loading, TopBar, PrivateRoute } from './components/index';
 // styles
 import './styles/main.css';
 
@@ -29,14 +29,14 @@ export default function App() {
       )}
       <Switch>
         {isAuthenticated ? (
-          <Route exact path="/" component={Home}></Route>
+          <Route exact path="/" component={Home} />
         ) : (
-          <Route exact path="/" component={Landing}></Route>
+          <Route exact path="/" component={Landing} />
         )}
-        <Route path="/tracks" component={Tracks} />
-        <Route path="/artist" component={Artist} />
-        <Route path="/setlist" component={Setlist} />
-        <Route path="/tourdashboard" component={TourDash} />
+        <PrivateRoute path="/tracks" component={Tracks} />
+        <PrivateRoute path="/artist" component={Artist} />
+        <PrivateRoute path="/setlist" component={Setlist} />
+        <PrivateRoute path="/tourdashboard" component={TourDash} />
       </Switch>
     </Router>
   );
