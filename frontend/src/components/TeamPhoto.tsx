@@ -23,14 +23,12 @@ const TeamPhoto: FC<TeamPhotoProps> = ({
     }
   };
   return (
-    <>
-      <div className="realtive items-center">
-        <img className={Photostyle} src={photo} onClick={() => name()} />
-        <div className={'bg-white p-2 absolute ' + ShowBox}>
-          <h1>{member}</h1>
-        </div>
+    <div className="realtive items-center">
+      <img className={Photostyle} src={photo} onClick={() => name()} />
+      <div className={'bg-white p-2 absolute ' + ShowBox}>
+        <h1>{member}</h1>
       </div>
-    </>
+    </div>
   );
 };
 export default TeamPhoto;

@@ -1,7 +1,7 @@
-import SearchLogo from '../assets/icons/search.svg';
 import React, { FC } from 'react';
+import { SearchIcon } from '../assets/icons/index';
 
-const Search: FC = () => {
+const SearchBar: FC = () => {
   return (
     <div className="relative p-5">
       <input
@@ -12,11 +12,11 @@ const Search: FC = () => {
         placeholder="Search..."
       />
       <img
-        src={SearchLogo}
+        src={SearchIcon}
         className="absolute w-8 top-0 left-2  pl-2 pt-6"
         alt=""
       />
     </div>
   );
 };
-export default Search;
+export default SearchBar;

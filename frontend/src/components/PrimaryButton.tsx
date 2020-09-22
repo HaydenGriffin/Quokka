@@ -1,13 +1,13 @@
 import React, { FC, PropsWithChildren, MouseEvent } from 'react';
 
-type ButtonProps = {
+type PrimaryButtonProps = {
   onClick?: (event: MouseEvent<HTMLButtonElement>) => void;
 };
 
-const PrimaryButton: FC<PropsWithChildren<ButtonProps>> = ({
+const PrimaryButton: FC<PropsWithChildren<PrimaryButtonProps>> = ({
   children,
   onClick,
-}: PropsWithChildren<ButtonProps>) => {
+}: PropsWithChildren<PrimaryButtonProps>) => {
   return (
     <button className="btn-primary" onClick={onClick}>
       {children}

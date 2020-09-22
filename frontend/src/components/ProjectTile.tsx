@@ -1,6 +1,5 @@
 import React, { FC } from 'react';
-import { ReactComponent as ThreeDots } from '../assets/icons/more-horizontal.svg';
-import { ReactComponent as UsersIcon } from '../assets/icons/users.svg';
+import { ThreeDotsIcon, UsersIcon } from '../assets/icons/index';
 
 type ProjectTileProps = {
   notification: boolean;
@@ -23,7 +22,7 @@ const ProjectTile: FC<ProjectTileProps> = ({
     <div className="relative">
       {notification && <div className="notify"></div>}
       <div className="tile">
-        <ThreeDots className="threedots" />
+        <ThreeDotsIcon className="threedots" />
         <h1 className="pt-8 text-3xl font-medium">{artist}</h1>
         <p className="subtitle">Current set</p>
         <h3 className="pb-12 font-medium">{set}</h3>

@@ -1,10 +1,12 @@
 import React from 'react';
-import Button from './components/Button';
-import Title from './components/PageTitleHeader';
-import TrackTile from './components/TracksTile';
-import { ReactComponent as TracksIcon } from './assets/icons/record-thicc.svg';
-import TourHeader from './components/TourHeader';
-import SetlistItemTour from './components/SetlistItemTour';
+import {
+  PrimaryButton,
+  PageTitleHeader,
+  TrackTile,
+  TourHeader,
+  SetlistItemTour,
+} from './components/index';
+import { TracksIcon } from './assets/icons/index';
 
 export default function TourDash() {
   return (
@@ -12,10 +14,10 @@ export default function TourDash() {
       <TourHeader title="Divide" setlist="Ed Sheeran" />
       <div className="pl-32 flex">
         <div className="w-2/3">
-          <Title title="Tracks">
+          <PageTitleHeader title="Tracks">
             <TracksIcon className="w-12 h-12 mr-12" />
-            <Button>New Track</Button>
-          </Title>
+            <PrimaryButton>New Track</PrimaryButton>
+          </PageTitleHeader>
           <div className="grid grid-cols-6 pt-16 col-gap-2 row-gap-12">
             <TrackTile
               notification={true}

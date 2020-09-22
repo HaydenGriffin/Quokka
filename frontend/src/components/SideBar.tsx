@@ -1,7 +1,5 @@
 import React, { FC } from 'react';
-import { ReactComponent as HomeIcon } from '../assets/icons/home.svg';
-import { ReactComponent as ArtistIcon } from '../assets/icons/mic-thicc.svg';
-import { ReactComponent as TourIcon } from '../assets/icons/globe.svg';
+import { HomeIcon, ArtistIcon, TourIcon } from '../assets/icons/index';
 const IconClassName = 'icon';
 
 const Sidebar: FC = () => {

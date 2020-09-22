@@ -1,10 +1,12 @@
 import React, { useState } from 'react';
-import Button from './components/Button';
-import Title from './components/PageTitleHeader';
-import SetlistTile from './components/SetlistTile';
-import { ReactComponent as SetlistIcon } from './assets/icons/list.svg';
-import SetlistHeader from './components/SetlistHeader';
-import SetlistDialog from './components/SetlistDialog';
+import {
+  PrimaryButton,
+  PageTitleHeader,
+  SetlistTile,
+  SetlistHeader,
+  SetlistDialog,
+} from './components/index';
+import { SetlistIcon } from './assets/icons/index';
 
 export default function Setlist() {
   const [showProjectDialog, setShowDialog] = useState(false);
@@ -16,10 +18,12 @@ export default function Setlist() {
       <div>
         <SetlistHeader title="Ed Sheeran" setlist="Divide 2019" />
         <div className="pl-32">
-          <Title title="Setlist">
+          <PageTitleHeader title="Setlist">
             <SetlistIcon className="w-12 h-12 mr-12" />
-            <Button onClick={openProjectDialog}>Create Setlist</Button>
-          </Title>
+            <PrimaryButton onClick={openProjectDialog}>
+              Create Setlist
+            </PrimaryButton>
+          </PageTitleHeader>
           <div className="grid grid-cols-6 pt-16 col-gap-2 row-gap-12">
             <SetlistTile
               notification={true}

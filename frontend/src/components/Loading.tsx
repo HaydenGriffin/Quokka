@@ -1,9 +1,9 @@
-import React from 'react';
-import loading from '../assets/icons/loading.svg';
+import React, { FC } from 'react';
+import { LoadingIcon } from '../assets/icons/index';
 
-const Loading = () => (
+const Loading: FC = () => (
   <div className="spinner">
-    <img src={loading} alt="Loading" />
+    <img src={LoadingIcon} alt="Loading" />
   </div>
 );
 

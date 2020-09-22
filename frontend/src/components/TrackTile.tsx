@@ -1,8 +1,7 @@
 import React, { FC } from 'react';
-import { ReactComponent as ThreeDots } from '../assets/icons/more-horizontal.svg';
-import { ReactComponent as UsersIcon } from '../assets/icons/users.svg';
+import { ThreeDotsIcon, UsersIcon } from '../assets/icons/index';
 
-type TracksTileProps = {
+type TrackTileProps = {
   notification: boolean;
   trackname: string;
   sections: number;
@@ -13,7 +12,7 @@ type TracksTileProps = {
   assigned: string;
 };
 
-const TracksTile: FC<TracksTileProps> = ({
+const TrackTile: FC<TrackTileProps> = ({
   notification,
   trackname,
   sections,
@@ -22,12 +21,12 @@ const TracksTile: FC<TracksTileProps> = ({
   notch,
   imag,
   assigned,
-}: TracksTileProps) => {
+}: TrackTileProps) => {
   return (
     <div className="relative">
       {notification && <div className="notify"></div>}
       <div className="tile">
-        <ThreeDots className="threedots" />
+        <ThreeDotsIcon className="threedots" />
         <h1 className="pt-8 text-3xl font-medium">{trackname}</h1>
         <p className="subtitle">Sections</p>
         <h3 className="pb-3 font-medium">{sections}</h3>
@@ -66,4 +65,4 @@ const TracksTile: FC<TracksTileProps> = ({
     </div>
   );
 };
-export default TracksTile;
+export default TrackTile;

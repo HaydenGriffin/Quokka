@@ -1,6 +1,5 @@
 import React, { FC } from 'react';
-import { ReactComponent as DropdownIcon } from '../assets/icons/chevron-down.svg';
-import { ReactComponent as ThreeDotsIcon } from '../assets/icons/more-horizontal.svg';
+import { DropdownIcon, ThreeDotsIcon } from '../assets/icons/index';
 import ArtistProperties from './ArtistProperties';
 
 type ArtistHeaderProps = {

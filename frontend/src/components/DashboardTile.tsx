@@ -1,5 +1,4 @@
 import React, { FC } from 'react';
-import { ReactComponent as ThreeDots } from '../assets/icons/more-horizontal.svg';
 
 type DashboardTileProps = {
   notification: boolean;

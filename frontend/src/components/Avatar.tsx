@@ -1,13 +1,13 @@
 import React from 'react';
 import { FC } from 'react';
 
-type AvatarIconProps = {
+type AvatarProps = {
   picture: string;
 };
 
-const AvatarIcon: FC<AvatarIconProps> = ({ picture }: AvatarIconProps) => {
+const Avatar: FC<AvatarProps> = ({ picture }: AvatarProps) => {
   return (
     <img src={picture} className="rounded-full h-24 w-24 p-5 mr-2" alt="" />
   );
 };
-export default AvatarIcon;
+export default Avatar;

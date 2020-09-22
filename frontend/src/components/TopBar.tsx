@@ -1,11 +1,13 @@
 import React, { FC } from 'react';
-import Searchbar from './search';
-import Avatar from './AvatarIcon';
-import { ReactComponent as BellIcon } from '../assets/icons/bell.svg';
-import Breadcrumbs from './Breadcrumbs';
-import LoginButton from './LoginButton';
+import {
+  SearchBar,
+  Avatar,
+  Breadcrumbs,
+  LoginButton,
+  LogoutButton,
+} from './index';
+import { BellIcon } from '../assets/icons/index';
 import { useAuth0 } from '@auth0/auth0-react';
-import LogoutButton from './LogoutButton';
 
 const TopBar: FC = () => {
   const { user, isAuthenticated } = useAuth0();
@@ -20,7 +22,7 @@ const TopBar: FC = () => {
           </li>
           <li>Ed Sheeran</li>
         </Breadcrumbs>
-        <Searchbar />
+        <SearchBar />
         <Avatar picture={picture} />
         <BellIcon className="w-16 h-16 mr-2" />
         {isAuthenticated ? <LogoutButton /> : <LoginButton />}

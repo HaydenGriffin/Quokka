@@ -1,6 +1,5 @@
 import React, { FC } from 'react';
-import { ReactComponent as ThreeDots } from '../assets/icons/more-horizontal.svg';
-import { ReactComponent as UsersIcon } from '../assets/icons/users.svg';
+import { ThreeDotsIcon, UsersIcon } from '../assets/icons/index';
 
 type SetlistProps = {
   notification: boolean;
@@ -23,7 +22,7 @@ const Setlist: FC<SetlistProps> = ({
     <div className="relative">
       {notification && <div className="notify"></div>}
       <div className="tile">
-        <ThreeDots className="threedots" />
+        <ThreeDotsIcon className="threedots" />
         <h1 className="pt-8 text-3xl font-medium mb-2">{setname}</h1>
         <p className="subtitle">Version</p>
         <h3 className="font-medium mb-2">{version}</h3>
