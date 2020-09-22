@@ -1,19 +1,21 @@
 import React from 'react';
-import Button from './components/Button';
-import Title from './components/PageTitleHeader';
-import TrackTile from './components/TracksTile';
-import { ReactComponent as TracksIcon } from './assets/icons/record-thicc.svg';
-import ArtistHeader from './components/ArtistHeader';
+import {
+  PrimaryButton,
+  TrackTile,
+  PageTitleHeader,
+  ArtistHeader,
+} from '../components/index';
+import { TracksIcon } from '../assets/icons/index';
 
 export default function Tracks() {
   return (
     <div>
       <ArtistHeader title="Ed Sheeran" setlist="Divide 2019" />
       <div className="pl-32">
-        <Title title="Tracks">
+        <PageTitleHeader title="Tracks">
           <TracksIcon className="w-12 h-12 mr-12" />
-          <Button>Create Track</Button>
-        </Title>
+          <PrimaryButton>Create Track</PrimaryButton>
+        </PageTitleHeader>
         <div className="grid grid-cols-6 pt-16 col-gap-2 row-gap-12">
           <TrackTile
             notification={true}

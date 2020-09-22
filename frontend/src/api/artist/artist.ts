@@ -2,8 +2,8 @@ import { AbstractAPI } from '../abstractApi';
 import axios, { AxiosResponse } from 'axios';
 
 export class ArtistAPI extends AbstractAPI {
-  async create(artistName: string, token: string): Promise<string> {
-    const { res } = await axios.post(
+  async create(artistName: string, token: string): Promise<AxiosResponse> {
+    const result = await axios.post(
       `${this.baseUrl}/api/artist`,
       {
         artistName,
@@ -14,7 +14,7 @@ export class ArtistAPI extends AbstractAPI {
         },
       }
     );
-    return res;
+    return result;
   }
 
   async find(token: string): Promise<AxiosResponse> {

@@ -1,7 +1,6 @@
 import React, { FC } from 'react';
-import { ReactComponent as ThreeDotsIcon } from '../assets/icons/more-horizontal.svg';
-import ArtistProperties from './ArtistProperties';
-import TeamPhoto from './TeamPhoto';
+import { ThreeDotsIcon } from '../assets/icons/index';
+import { ArtistProperties, TeamPhoto } from './index';
 import AvatarPhoto from '../assets/images/me.jpg';
 
 type TourHeaderProps = {

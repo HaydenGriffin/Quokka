@@ -1,7 +1,7 @@
 import React, { FC } from 'react';
-import { ReactComponent as CloseIcon } from '../assets/icons/x.svg';
+import { CloseIcon } from '../assets/icons/index';
 import { DialogOverlay, DialogContent } from '@reach/dialog';
-import Button from './Button';
+import { PrimaryButton } from './index';
 
 type SetlistDialogProps = {
   isOpen: boolean;
@@ -33,7 +33,7 @@ const SetlistDialog: FC<SetlistDialogProps> = ({
             <p className="subtitle">Users</p>
             <h1 className="font-medium text-3xl mb-2">4</h1>
             <div>
-              <Button>Update</Button>
+              <PrimaryButton>Update</PrimaryButton>
               <button className="btn-secondary">Delete Setlist</button>
             </div>
           </div>

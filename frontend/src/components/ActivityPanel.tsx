@@ -1,6 +1,5 @@
 import React, { FC } from 'react';
-import ActivityItem from './ActivityItem';
-import { ReactComponent as CloseIcon } from '../assets/icons/x.svg';
+import { ActivityItem } from './index';
 
 const ActivityPanel: FC = () => {
   return (

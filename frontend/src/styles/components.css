@@ -125,6 +125,7 @@
 
 .team-photo {
   @apply w-16 h-16 border-2 border-white rounded-full m-2 cursor-pointer;
+}
 
 .dashboard-tile {
   @apply flex items-center bg-white px-5 w-full py-2 rounded-md transition duration-150 ease-in-out;
@@ -136,4 +137,12 @@
 
 .team-photo-admin {
   @apply w-16 h-16 border-2 border-yellow-600 rounded-full m-2 cursor-pointer;
+}
+
+.signupbtn {
+  @apply text-white bg-accentfade p-2 px-3 text-xl my-3 transition duration-75 ease-in-out;
+}
+
+.signupbtn:hover {
+  @apply text-accentfade bg-white;
 }

@@ -2,12 +2,12 @@ import { AbstractAPI } from '../abstractApi';
 import axios, { AxiosResponse } from 'axios';
 
 export class TourAPI extends AbstractAPI {
-  async create(artistUuid: string, tourName: string): Promise<string> {
-    const { res } = await axios.post(`${this.baseUrl}/api/tour`, {
+  async create(artistUuid: string, tourName: string): Promise<AxiosResponse> {
+    const result = await axios.post(`${this.baseUrl}/api/tour`, {
       artistUuid,
       tourName,
     });
-    return res;
+    return result;
   }
 
   async find(): Promise<AxiosResponse> {

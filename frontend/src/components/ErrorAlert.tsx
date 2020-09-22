@@ -1,5 +1,5 @@
 import React, { FC, useState } from 'react';
-import { ReactComponent as CloseIcon } from '../assets/icons/x.svg';
+import { CloseIcon } from '../assets/icons/index';
 
 type ErrorAlertProps = {
   errormsg: string;
