@@ -11,11 +11,7 @@ const SearchBar: FC = () => {
         className="bg-primary rounded-full p-2 pl-10"
         placeholder="Search..."
       />
-      <img
-        src={SearchIcon}
-        className="absolute w-8 top-0 left-2  pl-2 pt-6"
-        alt=""
-      />
+      <SearchIcon className="absolute w-8 top-0 left-2  pl-2 pt-6" />
     </div>
   );
 };

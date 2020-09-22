@@ -10,8 +10,8 @@ import { ReactComponent as TourIcon } from './globe.svg';
 import { ReactComponent as HomeIcon } from './home.svg';
 import { ReactComponent as BellIcon } from './bell.svg';
 
-import SearchIcon from './search.svg';
-import LoadingIcon from './loading.svg';
+import { ReactComponent as SearchIcon } from './search.svg';
+import { ReactComponent as LoadingIcon } from './loading.svg';
 
 export {
   ArtistIcon,
