@@ -5,8 +5,8 @@ import {
   TrackTile,
   TourHeader,
   SetlistItemTour,
-} from './components/index';
-import { TracksIcon } from './assets/icons/index';
+} from '../components/index';
+import { TracksIcon } from '../assets/icons/index';
 
 export default function TourDash() {
   return (

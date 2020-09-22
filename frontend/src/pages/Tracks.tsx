@@ -4,8 +4,8 @@ import {
   TrackTile,
   PageTitleHeader,
   ArtistHeader,
-} from './components/index';
-import { TracksIcon } from './assets/icons/index';
+} from '../components/index';
+import { TracksIcon } from '../assets/icons/index';
 
 export default function Tracks() {
   return (

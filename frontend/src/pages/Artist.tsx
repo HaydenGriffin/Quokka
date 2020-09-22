@@ -5,9 +5,9 @@ import {
   PageTitleHeader,
   ProjectTile,
   ProjectDialog,
-} from './components/index';
-import * as api from './api/api';
-import { ArtistIcon } from './assets/icons/index';
+} from '../components/index';
+import * as api from '../api/api';
+import { ArtistIcon } from '../assets/icons/index';
 
 export default function Artist() {
   const [showProjectDialog, setShowDialog] = useState(false);

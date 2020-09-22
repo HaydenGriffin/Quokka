@@ -5,8 +5,8 @@ import {
   SetlistTile,
   SetlistHeader,
   SetlistDialog,
-} from './components/index';
-import { SetlistIcon } from './assets/icons/index';
+} from '../components/index';
+import { SetlistIcon } from '../assets/icons/index';
 
 export default function Setlist() {
   const [showProjectDialog, setShowDialog] = useState(false);

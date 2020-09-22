@@ -1,6 +1,6 @@
 import React from 'react';
-import { SignupButton, LoginButton } from './components/index';
-import EdLanding from './assets/images/Ed-Landing.jpg';
+import { SignupButton, LoginButton } from '../components/index';
+import EdLanding from '../assets/images/Ed-Landing.jpg';
 
 export default function Landing() {
   return (
