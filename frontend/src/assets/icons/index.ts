@@ -9,7 +9,6 @@ import { ReactComponent as UsersIcon } from './users.svg';
 import { ReactComponent as TourIcon } from './globe.svg';
 import { ReactComponent as HomeIcon } from './home.svg';
 import { ReactComponent as BellIcon } from './bell.svg';
-
 import { ReactComponent as SearchIcon } from './search.svg';
 import { ReactComponent as LoadingIcon } from './loading.svg';
 
